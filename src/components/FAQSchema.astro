@@ -1,0 +1,30 @@
+---
+// FAQ Schema for SEO - generates structured data from FAQ content
+interface Props {
+	faqs: Array<{
+		entry: {
+			question: string;
+			answer: string;
+		};
+	}>;
+}
+
+const { faqs } = Astro.props;
+
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.entry.question,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: faq.entry.answer,
+		},
+	})),
+};
+---
+
+{faqs.length > 0 && (
+	<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+)}

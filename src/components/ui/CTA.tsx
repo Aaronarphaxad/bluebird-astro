@@ -1,0 +1,55 @@
+import React from 'react';
+
+interface CTAProps {
+	href: string;
+	variant?: 'primary' | 'secondary' | 'dark' | 'outline';
+	size?: 'xs' | 'sm' | 'md' | 'lg';
+	showArrow?: boolean;
+	className?: string;
+	children: React.ReactNode;
+}
+
+export default function CTA({ 
+	href, 
+	variant = 'primary', 
+	size = 'sm',
+	showArrow = true,
+	className = '',
+	children
+}: CTAProps) {
+	const baseClasses = 'inline-flex items-center justify-center gap-2 font-medium rounded-full transition-all duration-300 group whitespace-nowrap';
+
+	const sizeClasses = {
+		xs: 'px-3 py-1.5 text-xs h-7',
+		sm: 'px-4 py-2 text-sm h-8',
+		md: 'px-5 py-2.5 text-sm h-10',
+		lg: 'px-6 py-3 text-base h-12',
+	};
+
+	const variantClasses = {
+		primary: 'bg-accent text-white hover:bg-accentDark hover:scale-105',
+		secondary: 'bg-[#f5f5f5] text-text border border-[#e0e0e0] hover:bg-[#ebebeb] hover:border-[#d0d0d0] hover:scale-105',
+		dark: 'bg-[#1a1a1a] text-white hover:bg-[#2a2a2a] hover:scale-105',
+		outline: 'bg-transparent text-text border border-accentSubtle/50 hover:bg-accentSubtle/30 hover:border-accent/30 hover:scale-105',
+	};
+
+	const arrowSizeClasses = {
+		xs: 'w-2.5 h-2.5',
+		sm: 'w-3 h-3',
+		md: 'w-3.5 h-3.5',
+		lg: 'w-4 h-4',
+	};
+
+	const combinedClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+
+	return (
+		<a href={href} className={combinedClasses}>
+			{children}
+			{showArrow && (
+				<svg className={`${arrowSizeClasses[size]} transform group-hover:translate-x-0.5 transition-transform`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+				</svg>
+			)}
+		</a>
+	);
+}

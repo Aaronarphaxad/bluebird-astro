@@ -1,0 +1,164 @@
+---
+// FAQ Section - Simplified design
+import CTA from './ui/CTA.astro';
+import FAQSchema from './FAQSchema.astro';
+import categoryWebsite from '../content/faq-categories/website.json';
+import categoryHosting from '../content/faq-categories/hosting.json';
+import categoryPricing from '../content/faq-categories/pricing.json';
+import faq1 from '../content/faqs/faq-1.json';
+import faq2 from '../content/faqs/faq-2.json';
+import faq3 from '../content/faqs/faq-3.json';
+import faq4 from '../content/faqs/faq-4.json';
+import faq5 from '../content/faqs/faq-5.json';
+import faq6 from '../content/faqs/faq-6.json';
+import faq7 from '../content/faqs/faq-7.json';
+import faq8 from '../content/faqs/faq-8.json';
+import faq9 from '../content/faqs/faq-9.json';
+import faq10 from '../content/faqs/faq-10.json';
+import faq11 from '../content/faqs/faq-11.json';
+
+const categories = [
+	{ entry: categoryWebsite },
+	{ entry: categoryHosting },
+	{ entry: categoryPricing },
+];
+const sortedCategories = categories.sort((a, b) => (a.entry.order || 0) - (b.entry.order || 0));
+const faqs = [
+	{ entry: faq1 },
+	{ entry: faq2 },
+	{ entry: faq3 },
+	{ entry: faq4 },
+	{ entry: faq5 },
+	{ entry: faq6 },
+	{ entry: faq7 },
+	{ entry: faq8 },
+	{ entry: faq9 },
+	{ entry: faq10 },
+	{ entry: faq11 },
+];
+const sortedFaqs = faqs.sort((a, b) => (a.entry.order || 0) - (b.entry.order || 0));
+
+---
+
+<section class="relative py-14 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-bg overflow-hidden">
+	<div class="relative max-w-5xl mx-auto">
+		<!-- Section header -->
+		<div class="text-center mb-8 sm:mb-10">
+			<p class="font-body text-section-tiny font-medium text-textMuted mb-2">
+				FAQ
+			</p>
+			<h2 class="font-headline text-section-header font-medium text-text mb-1">
+				Frequently asked questions
+			</h2>
+			<p class="font-body text-section-subheading font-medium text-textMuted max-w-md mx-auto">
+				Quick answers to common questions.
+			</p>
+		</div>
+		
+		<!-- Category tabs -->
+		<div class="flex flex-wrap justify-center gap-2 mb-6 sm:mb-8">
+			{sortedCategories.map((category, index) => (
+				<button 
+					class={`tab-button px-3 sm:px-4 py-2 text-xs font-medium rounded-full transition-all duration-300 ${
+						index === 0 
+							? 'active bg-text text-bg' 
+							: 'text-textMuted bg-accentSubtle/50 hover:bg-accentSubtle'
+					}`}
+					data-tab={category.entry.slug}
+					data-index={index}
+					aria-label={`View ${category.entry.name} FAQs`}
+					aria-pressed={index === 0 ? 'true' : 'false'}
+					type="button"
+				>
+					{category.entry.name}
+				</button>
+			))}
+		</div>
+		
+		<!-- FAQ accordions -->
+		<div class="rounded-xl overflow-hidden">
+			{sortedCategories.map((category, categoryIndex) => {
+				const categoryFaqs = sortedFaqs.filter(faq => faq.entry.category === category.entry.slug);
+				return (
+					<div 
+						id={`${category.entry.slug}-tab`} 
+						class={`tab-content ${categoryIndex === 0 ? '' : 'hidden'}`}
+						role="tabpanel"
+						aria-labelledby={`tab-${category.entry.slug}`}
+						aria-hidden={categoryIndex === 0 ? 'false' : 'true'}
+					>
+						<div class="divide-y divide-accentSubtle/50">
+							{categoryFaqs.map((faq) => (
+								<details class="group bg-white border border-accentSubtle/30 shadow-sm hover:shadow-md hover:border-accent/20 transition-all duration-300">
+									<summary class="flex items-center justify-between gap-3 px-4 py-3 sm:py-4 cursor-pointer list-none" aria-label={`Toggle answer for: ${faq.entry.question}`}>
+										<span class="font-body text-section-body font-medium text-text group-hover:text-accent transition-colors">{faq.entry.question}</span>
+										<span class="w-6 h-6 rounded-full bg-accentSubtle/50 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/10 transition-colors">
+											<svg class="w-3 h-3 text-textMuted group-hover:text-accent transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+											</svg>
+										</span>
+									</summary>
+									<div class="px-4 pb-3 sm:pb-4 pt-0">
+										<div class="font-body text-section-body font-medium text-textMuted leading-relaxed">
+											{faq.entry.answer}
+										</div>
+									</div>
+								</details>
+							))}
+						</div>
+					</div>
+				);
+			})}
+		</div>
+		
+		<!-- Still have questions -->
+		<div class="mt-8 text-center">
+			<p class="font-body text-section-tiny font-medium text-textMuted mb-3">Still have questions?</p>
+			<CTA href="/contact" variant="primary" size="sm">
+				Get in touch
+			</CTA>
+		</div>
+	</div>
+</section>
+
+<!-- FAQ Schema for SEO -->
+<FAQSchema faqs={sortedFaqs} />
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const tabButtons = document.querySelectorAll('.tab-button');
+		const tabContents = document.querySelectorAll('.tab-content');
+		
+		tabButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const targetTab = button.getAttribute('data-tab');
+				
+				tabButtons.forEach(btn => {
+					btn.classList.remove('active', 'bg-text', 'text-bg');
+					btn.classList.add('text-textMuted', 'bg-accentSubtle/50');
+					btn.setAttribute('aria-pressed', 'false');
+				});
+				
+				button.classList.add('active', 'bg-text', 'text-bg');
+				button.classList.remove('text-textMuted', 'bg-accentSubtle/50');
+				button.setAttribute('aria-pressed', 'true');
+				
+				tabContents.forEach(content => {
+					content.classList.add('hidden');
+					content.setAttribute('aria-hidden', 'true');
+				});
+				const targetContent = document.getElementById(`${targetTab}-tab`);
+				if (targetContent) {
+					targetContent.classList.remove('hidden');
+					targetContent.setAttribute('aria-hidden', 'false');
+				}
+			});
+		});
+	});
+</script>
+
+<style>
+	details summary::-webkit-details-marker {
+		display: none;
+	}
+</style>

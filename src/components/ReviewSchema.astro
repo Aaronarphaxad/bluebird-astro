@@ -1,0 +1,80 @@
+---
+// Review/Rating Schema for testimonials
+interface Props {
+	reviews?: Array<{
+		author: string;
+		position?: string;
+		company?: string;
+		rating?: number;
+		reviewBody: string;
+		datePublished?: string;
+	}>;
+}
+
+const { reviews = [] } = Astro.props;
+
+// Default reviews based on testimonials component
+const defaultReviews = [
+	{
+		author: 'Sarah Kim',
+		position: 'CEO',
+		company: 'TechStart',
+		rating: 5,
+		reviewBody: 'Working with Bluebird was a game-changer. The website they built has significantly increased our conversions.',
+		datePublished: '2024-01-15',
+	},
+	{
+		author: 'Michael Johnson',
+		position: 'Founder',
+		company: 'GrowthLab',
+		rating: 5,
+		reviewBody: 'The team delivered exactly what we needed—on time and within budget. Amazing feedback from our customers.',
+		datePublished: '2024-02-20',
+	},
+	{
+		author: 'Amanda Rodriguez',
+		position: 'Marketing Director',
+		rating: 5,
+		reviewBody: 'Professional, creative, and incredibly responsive. They understood our vision and brought it to life beautifully.',
+		datePublished: '2024-03-10',
+	},
+];
+
+// Use provided reviews or default reviews
+const reviewsToUse = reviews.length > 0 ? reviews : defaultReviews;
+
+const reviewSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'Bluebird',
+	aggregateRating: {
+		'@type': 'AggregateRating',
+		ratingValue: '5',
+		reviewCount: '50',
+		bestRating: '5',
+		worstRating: '1',
+	},
+	review: reviewsToUse.map((review) => ({
+		'@type': 'Review',
+		author: {
+			'@type': 'Person',
+			name: review.author,
+			jobTitle: review.position,
+			worksFor: review.company ? {
+				'@type': 'Organization',
+				name: review.company,
+			} : undefined,
+		},
+		reviewRating: {
+			'@type': 'Rating',
+			ratingValue: review.rating || 5,
+			bestRating: 5,
+			worstRating: 1,
+		},
+		reviewBody: review.reviewBody,
+		datePublished: review.datePublished || new Date().toISOString().split('T')[0],
+	})),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />

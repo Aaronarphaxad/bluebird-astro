@@ -1,0 +1,50 @@
+---
+// LocalBusiness Schema for better local SEO
+const baseUrl = 'https://bluebirdweb.ca';
+
+const localBusinessSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'LocalBusiness',
+	name: 'Bluebird',
+	alternateName: 'Bluebird Web Development',
+	url: baseUrl,
+	logo: `${baseUrl}/bblogoblack.svg`,
+	description: 'Custom website development and web application services in British Columbia, Canada. Fast delivery, conversion-focused design.',
+	address: {
+		'@type': 'PostalAddress',
+		addressRegion: 'BC',
+		addressCountry: 'CA',
+	},
+	geo: {
+		'@type': 'GeoCoordinates',
+		latitude: '49.2827',
+		longitude: '-123.1207',
+	},
+	telephone: '',
+	email: 'info@bluebirdweb.ca',
+	priceRange: '$$',
+	openingHoursSpecification: {
+		'@type': 'OpeningHoursSpecification',
+		dayOfWeek: [
+			'Monday',
+			'Tuesday',
+			'Wednesday',
+			'Thursday',
+			'Friday',
+		],
+		opens: '09:00',
+		closes: '17:00',
+	},
+	areaServed: {
+		'@type': 'Country',
+		name: 'Canada',
+	},
+	sameAs: [
+		'https://www.instagram.com/',
+		'https://x.com/',
+		'https://www.linkedin.com/',
+	],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />

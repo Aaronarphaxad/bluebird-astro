@@ -1,0 +1,129 @@
+---
+interface Props {
+	type: 'Organization' | 'WebSite' | 'WebPage' | 'Service';
+	pageData?: {
+		name?: string;
+		description?: string;
+		url?: string;
+	};
+}
+
+const { type, pageData } = Astro.props;
+
+const baseUrl = 'https://bluebirdweb.ca';
+
+// Organization schema (for all pages)
+const organizationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'Bluebird',
+	alternateName: 'Bluebird Web Development',
+	url: baseUrl,
+	logo: {
+		'@type': 'ImageObject',
+		url: `${baseUrl}/bblogoblack.svg`,
+		width: 200,
+		height: 200,
+	},
+	description: 'A lean web development studio specializing in custom websites and web applications. Fast delivery, conversion-focused design, and trusted by 50+ businesses across British Columbia, Canada.',
+	address: {
+		'@type': 'PostalAddress',
+		addressRegion: 'BC',
+		addressCountry: 'CA',
+	},
+	sameAs: [
+		'https://www.instagram.com/',
+		'https://x.com/',
+		'https://www.linkedin.com/',
+	],
+	contactPoint: {
+		'@type': 'ContactPoint',
+		email: 'info@bluebirdweb.ca',
+		contactType: 'Customer Service',
+		areaServed: 'CA',
+		availableLanguage: 'English',
+	},
+	foundingDate: '2018',
+	numberOfEmployees: {
+		'@type': 'QuantitativeValue',
+		value: '2-10',
+	},
+};
+
+// Website schema (for homepage)
+const websiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: 'Bluebird',
+	url: baseUrl,
+	description: 'Custom websites and web applications built for speed, performance, and conversion.',
+	potentialAction: {
+		'@type': 'SearchAction',
+		target: {
+			'@type': 'EntryPoint',
+			urlTemplate: `${baseUrl}/search?q={search_term_string}`,
+		},
+		'query-input': 'required name=search_term_string',
+	},
+};
+
+// WebPage schema
+const webPageSchema = pageData ? {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: pageData.name,
+	description: pageData.description,
+	url: pageData.url || baseUrl,
+} : null;
+
+// Service schema
+const serviceSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	serviceType: 'Web Development',
+	name: 'Custom Website Development & Web Applications',
+	provider: {
+		'@type': 'Organization',
+		name: 'Bluebird',
+		url: baseUrl,
+	},
+	areaServed: [
+		{
+			'@type': 'Country',
+			name: 'Canada',
+		},
+		{
+			'@type': 'State',
+			name: 'British Columbia',
+		},
+	],
+	description: 'Custom websites and web applications built for speed, performance, and conversion. Services include website design, custom software development, e-commerce solutions, UI/UX design, and ongoing support.',
+	offers: {
+		'@type': 'Offer',
+		priceCurrency: 'CAD',
+		availability: 'https://schema.org/InStock',
+	},
+	aggregateRating: {
+		'@type': 'AggregateRating',
+		ratingValue: '5',
+		reviewCount: '50',
+		bestRating: '5',
+		worstRating: '1',
+	},
+};
+
+let schema = null;
+if (type === 'Organization') {
+	schema = organizationSchema;
+} else if (type === 'WebSite') {
+	schema = websiteSchema;
+} else if (type === 'WebPage' && webPageSchema) {
+	schema = webPageSchema;
+} else if (type === 'Service') {
+	schema = serviceSchema;
+}
+---
+
+{schema && (
+	<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+)}

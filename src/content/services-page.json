@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "title": "Services",
+    "subtitle": "Everything you need to launch and grow your online presence."
+  },
+  "pageIntro": "We're a web studio. Most clients start with a new or redesigned website or a custom web app. We also offer brand design and CRM & automation when that's what you need.",
+  "problemStatement": {
+    "heading": "Sound familiar?",
+    "lines": [
+      "Your website doesn't reflect how good your business is.",
+      "Visitors don't turn into leads or sales.",
+      "You're not sure what to fix first."
+    ],
+    "bridge": "We fix that—with strategy, design, and build."
+  },
+  "sectionLabels": {
+    "main": "What we do",
+    "other": "Other ways we help"
+  },
+  "services": [
+    {
+      "title": "Websites",
+      "icon": "globe",
+      "group": "main",
+      "description": "Fast, responsive websites that turn visitors into customers. Built for performance and conversion.",
+      "whatsIncluded": [
+        "Mobile-first responsive design",
+        "SEO optimized structure",
+        "Content management system",
+        "Fast load times (< 2 seconds)",
+        "Analytics integration"
+      ],
+      "order": 1
+    },
+    {
+      "title": "Custom Software",
+      "icon": "code",
+      "group": "main",
+      "description": "Tailored software solutions that solve your specific business challenges. From web applications to internal tools, we build what you need.",
+      "whatsIncluded": [
+        "Custom functionality",
+        "Scalable architecture",
+        "API integrations",
+        "User authentication",
+        "Ongoing support"
+      ],
+      "order": 2
+    },
+    {
+      "title": "Brand Design",
+      "icon": "palette",
+      "group": "other",
+      "description": "Stand out from the crowd with a cohesive brand identity that resonates with your audience.",
+      "whatsIncluded": [
+        "Logo design",
+        "Brand guidelines",
+        "Color palette",
+        "Typography system",
+        "Visual identity assets"
+      ],
+      "order": 3
+    },
+    {
+      "title": "CRM & Automation",
+      "icon": "settings",
+      "group": "other",
+      "description": "Streamline your operations with CRM setup and workflow automation that saves time and increases efficiency.",
+      "whatsIncluded": [
+        "CRM setup & configuration",
+        "Workflow automation",
+        "Integration with existing tools",
+        "Team training",
+        "Ongoing optimization"
+      ],
+      "order": 4
+    }
+  ],
+  "processTeaser": {
+    "heading": "How it works",
+    "body": "We align on scope and timeline, then design and build in clear phases. Most projects launch in 4–8 weeks.",
+    "linkText": "See our process",
+    "linkHref": "/#how-it-works"
+  },
+  "whyChooseUs": {
+    "title": "Why work with us",
+    "benefits": [
+      {
+        "title": "Fast delivery",
+        "description": "Most projects launch in 4-8 weeks. No endless revisions or scope creep—just results.",
+        "icon": "⚡",
+        "order": 1
+      },
+      {
+        "title": "Conversion-focused",
+        "description": "Every design decision is backed by data. We build to convert visitors into customers.",
+        "icon": "🎯",
+        "order": 2
+      },
+      {
+        "title": "Ongoing support",
+        "description": "We're here after launch. Updates, maintenance, and improvements—we've got you covered.",
+        "icon": "🔧",
+        "order": 3
+      }
+    ]
+  },
+  "cta": {
+    "line": "Ready to start?",
+    "buttonText": "Get in touch",
+    "href": "/contact"
+  }
+}

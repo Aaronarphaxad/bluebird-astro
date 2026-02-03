@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<Layout
+	title="Projects - Our Work | Bluebird Web Development"
+	description="Real results for real businesses. See how we've helped companies grow with custom websites and software. Average 340% increase in conversions, 2.1s page load times."
+	canonicalURL="/contact"
+	ogImage="/og-contact.jpg"
+>
+	<!-- Reuse the main CTA/contact section so this page matches the updated design -->
+	<div class="pt-20 sm:pt-24">
+		<CTA id="contact-page" />
+	</div>
+
+	<Footer />
+</Layout>

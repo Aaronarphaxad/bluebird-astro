@@ -1,0 +1,366 @@
+---
+// Hero2 - Modern hero section matching the new design
+import TrustedBy from './TrustedBy.astro';
+import CTA from './ui/CTA.astro';
+---
+
+<section class="hero2-section">
+  <!-- Backdrop: hero image + gradient overlay + light shape -->
+  <div class="hero2-backdrop" aria-hidden="true">
+    <div class="hero2-backdrop-image" data-hero2-parallax></div>
+    <div class="hero2-backdrop-gradient"></div>
+    <div class="hero2-backdrop-shape">
+      <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="400" cy="400" r="320" fill="url(#hero2-soft)" opacity="0.35" />
+        <defs>
+          <radialGradient id="hero2-soft" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="currentColor" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero2-container">
+
+    <!-- Hero Content -->
+    <div class="hero2-content">
+      <h1 class="hero2-headline font-headline">
+        Websites that turn visitors into customers
+      </h1>
+      <p class="hero2-description" role="doc-subtitle">
+        Bluebird is a creative tech studio that builds conversion-focused websites for businesses that need clarity, trust, and more inquiries.
+      </p>
+      
+      
+      <!-- CTA Buttons -->
+      <div class="hero2-cta-group">
+        <CTA href="#pricing" variant="secondary" size="md" showArrow={false}>
+          View pricing
+        </CTA>
+        <CTA href="/contact" variant="primary" size="md" showArrow={false}>
+          Start a project
+        </CTA>
+      </div>
+    </div>
+
+    <!-- Ideal for + service benefits strip -->
+    <div class="hero2-trusted-wrapper">
+      <TrustedBy />
+    </div>
+  </div>
+</section>
+
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
+  const section = document.querySelector('.hero2-section');
+  const layer = document.querySelector('[data-hero2-parallax]');
+
+  const updateParallax = () => {
+    if (!section || !layer || prefersReducedMotion.matches || !mobileQuery.matches) {
+      if (layer) {
+        layer.style.setProperty('--hero2-parallax-offset', '0px');
+      }
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || 0;
+    const progress = Math.min(
+      1,
+      Math.max(0, (viewportHeight - rect.top) / (viewportHeight + rect.height))
+    );
+    const offset = (progress - 0.5) * 40;
+    layer.style.setProperty('--hero2-parallax-offset', `${offset}px`);
+  };
+
+  updateParallax();
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  window.addEventListener('resize', updateParallax);
+</script>
+
+<style>
+  .hero2-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 8rem 1rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero2-backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Pure CSS parallax: fixed background moves slower as you scroll away */
+  .hero2-backdrop-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('/src/assets/images/hero/hero-background.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  @media (prefers-reduced-motion: reduce), (max-width: 768px) {
+    .hero2-backdrop-image {
+      background-attachment: scroll;
+    }
+  }
+
+  .hero2-backdrop-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.15) 100%
+      ),
+      radial-gradient(
+        ellipse 90% 70% at 50% 20%,
+        rgba(0, 71, 171, 0.06) 0%,
+        transparent 55%
+      );
+    background-attachment: fixed;
+  }
+
+  @media (prefers-reduced-motion: reduce), (max-width: 768px) {
+    .hero2-backdrop-gradient {
+      background-attachment: scroll;
+    }
+  }
+
+  .hero2-backdrop-shape {
+    position: absolute;
+    top: -15%;
+    right: -12%;
+    width: min(75vw, 520px);
+    height: auto;
+    aspect-ratio: 1;
+    color: #0047ab;
+  }
+
+  .hero2-backdrop-shape svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .hero2-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+
+  /* Hero Content */
+  .hero2-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 800px;
+  }
+
+  /* Subtle hero text reveal (pure CSS) */
+  .hero2-headline {
+    font-size: clamp(2.1rem, 6vw + 1rem, 3.6rem);
+    font-weight: 550;
+    color: #1a1a1a;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 0;
+    text-align: center;
+    opacity: 0;
+    animation: hero-text-reveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+  }
+
+  .hero2-description {
+    font-size: clamp(0.98rem, 1.4vw + 0.55rem, 1.1rem);
+    color: #4a4a4a;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+    max-width: 700px;
+    opacity: 0;
+    animation: hero-text-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+  }
+
+  .hero2-cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+    opacity: 0;
+    animation: hero-text-reveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  }
+
+  @keyframes hero-text-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero2-headline,
+    .hero2-description,
+    .hero2-cta-group,
+    .hero2-trusted-wrapper {
+      opacity: 1;
+      animation: none;
+    }
+  }
+
+  .hero2-blur {
+    filter: blur(4px);
+    display: inline-block;
+    transition: filter 0.3s ease;
+  }
+
+  .hero2-headline:hover .hero2-blur {
+    filter: blur(2px);
+  }
+
+  /* Location Badge */
+  .hero2-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 71, 171, 0.05);
+    border: 1px solid rgba(0, 71, 171, 0.1);
+    border-radius: 9999px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.6rem;
+    color: #4a4a4a;
+    margin-top: 0.5rem;
+  }
+  
+  .hero2-flag {
+    font-size: 1rem;
+    line-height: 1;
+  }
+  
+  .hero2-location-text {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* Trusted By Section */
+  .hero2-trusted-wrapper {
+    width: 100%;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: hero-text-reveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+  }
+
+  .hero2-trusted-wrapper :global(section) {
+    background: transparent;
+    padding: 0;
+  }
+
+  .hero2-trusted-wrapper :global(p) {
+    font-size: 0.875rem;
+    color: #4a4a4a;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero2-backdrop-image {
+      top: -8%;
+      bottom: -8%;
+      transform: translate3d(0, var(--hero2-parallax-offset, 0px), 0);
+      will-change: transform;
+    }
+
+    .hero2-backdrop-shape {
+      width: min(65vw, 400px);
+      top: -10%;
+      right: -15%;
+      opacity: 0.9;
+    }
+
+    .hero2-section {
+      padding: 6rem 1rem 3rem;
+    }
+
+    .hero2-container {
+      gap: 2.5rem;
+    }
+
+    .hero2-headline {
+      font-size: clamp(2rem, 7vw + 0.7rem, 3.3rem);
+      line-height: 1.08;
+    }
+
+    .hero2-description {
+      font-size: clamp(0.95rem, 2.2vw + 0.55rem, 1.1rem);
+      line-height: 1.7;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero2-backdrop-shape {
+      width: min(55vw, 280px);
+      top: -5%;
+      right: -20%;
+      opacity: 0.7;
+    }
+
+    .hero2-section {
+      padding: 5rem 1rem 2rem;
+    }
+
+    .hero2-container {
+      gap: 2rem;
+    }
+
+    .hero2-headline {
+      font-size: clamp(1.9rem, 8vw + 0.6rem, 2.7rem);
+    }
+
+    .hero2-description {
+      font-size: clamp(0.95rem, 3vw + 0.5rem, 1.05rem);
+    }
+
+    .hero2-status-tag {
+      font-size: 0.8125rem;
+      padding: 0.4375rem 0.875rem;
+    }
+
+    .hero2-cta-group {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero2-cta-group :global(a) {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
+</style>

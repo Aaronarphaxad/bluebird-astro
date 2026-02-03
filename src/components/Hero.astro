@@ -1,0 +1,1221 @@
+---
+import heroData from '../content/hero/index.json';
+
+const hero = heroData;
+---
+
+<header class="hero-section">
+  <div class="hero">
+    <div class="content">
+      <h1>
+        {hero?.headline ? (
+          hero.headline.split('\n').map((line: string, i: number) => (
+            <>
+              {line}
+              {i < hero.headline.split('\n').length - 1 && <br/>}
+            </>
+          ))
+        ) : (
+          <>
+            MORE CUSTOMERS<br/>WITHOUT THE<br/>AGENCY PRICE
+          </>
+        )}
+      </h1>
+      {hero?.subheadline && (
+        <p>{hero.subheadline}</p>
+      )}
+      <a href="/contact">Let's Talk</a>
+    </div>
+  </div>
+  <div class="sticker">
+    <div class="content">
+      <div class="panel">
+        <div class="panel__row">
+          <div class="card card--one">
+            <div class="card__column">
+              <div class="card__avatar">
+                <img src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/526.jpg" alt="" />
+              </div>
+            </div>
+            <div class="card__content">
+              <div class="card__details">
+                <div class="text"></div>
+                <div class="image figma">
+                  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <title>Figma</title>
+                    <path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.098-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/>
+                  </svg>
+                </div>
+                <div class="text"></div>
+                <div class="card__dummy">
+                  <div class="text-wrap">
+                    <div class="text"></div>
+                    <div class="text"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card__column">
+              <div class="card__company webflow">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>Webflow</title>
+                  <path d="M17.802 8.56s-1.946 6.103-2.105 6.607a.104.104 0 0 1-.063.064c-.631-1.636-2.188-6.151-2.188-6.151a.104.104 0 0 0-.1-.072H10.09a.104.104 0 0 0-.1.139s2.143 5.678 2.574 6.97c-.666 1.4-1.634 2.89-1.634 2.89a.104.104 0 0 0 .088.158h3.174a.104.104 0 0 0 .09-.052s.926-1.704 1.248-2.373c.396 1.023 1.201 2.355 1.201 2.355a.104.104 0 0 0 .09.052h3.177a.104.104 0 0 0 .088-.158s-.965-1.49-1.634-2.89c.431-1.292 2.574-6.97 2.574-6.97a.104.104 0 0 0-.1-.139h-3.254a.104.104 0 0 0-.1.072c-.242.504-2.106 6.607-2.106 6.607a.104.104 0 0 1-.063-.064c-.159-.504-2.105-6.607-2.105-6.607a.104.104 0 0 0-.1-.072H7.654a.104.104 0 0 0-.1.139l2.975 7.858a.104.104 0 0 1 0 .078l-1.087 2.282a.104.104 0 0 0 .093.15h3.174a.104.104 0 0 0 .093-.057l4.148-10.311a.104.104 0 0 0-.097-.141h-3.253a.104.104 0 0 0-.097.07Z"/>
+                </svg>
+              </div>
+              <span class="tool-label">Design</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel__row">
+          <div class="card card--three">
+            <div class="card__column">
+              <div class="card__avatar">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>Google Chrome</title>
+                  <path fill="#4285F4" d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z" />
+                </svg>
+                <img src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/430.jpg" alt="" />
+              </div>
+              <div class="card__dummy">
+                <div class="text-wrap">
+                  <div class="text"></div>
+                  <div class="text"></div>
+                </div>
+                <div class="cta"></div>
+              </div>
+            </div>
+            <div class="card__content">
+              <div class="card__details">
+                <div class="text"></div>
+                <div class="image shopify">
+                  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <title>Shopify</title>
+                    <path d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192s-1.929-.136-1.929-.136-1.275-1.274-1.439-1.411c-.045-.037-.075-.057-.121-.074l-.914 21.104h.023zM11.71 11.305s-.81-.424-1.774-.424c-1.447 0-1.504.906-1.504 1.141 0 1.232 3.24 1.715 3.24 4.609 0 2.274-1.447 3.737-3.397 3.737-2.336 0-3.535-1.447-3.535-1.447l.631-2.062s1.23 1.051 2.247 1.051a.915.915 0 00.96-.924c0-1.619-2.661-1.686-2.661-4.347 0-2.236 1.619-4.405 4.855-4.405 1.232 0 1.842.348 1.842.348l-.904 2.723zM13.467 7.612l-.037.848s-.916-.424-2.006-.424c-1.596 0-1.733.779-1.733 1.098 0 .12.008.22.029.301-.096.036-.148.053-.148.053l-.002-.055c0-.215.047-.769.613-1.164.545-.379 1.241-.508 1.982-.508 1.096 0 1.851.332 2.062.424l.001-.002-.761.001v-.571zm-1.177-5.077c.133 0 .246.037.352.097l-1.477 3.428s-.636-1.458-.636-2.437c0-.281.035-.506.092-.684.193-.252.455-.404.755-.404h.914zm.398-2.535c.096.018.191.055.266.152.186.224.245.595.283.959-.582.175-1.217.369-1.857.563.362-1.164.869-1.683 1.308-1.674zm.186-1.74c.094 0 .189.014.283.047.893.317 1.328 1.64 1.483 2.47l-1.448.439c-.074-.491-.275-1.174-.581-1.634a1.358 1.358 0 00.263-1.322z"/>
+                  </svg>
+                </div>
+                <div class="text"></div>
+              </div>
+            </div>
+            <div class="card__column">
+              <div class="card__company framer">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>Framer</title>
+                  <path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z"/>
+                </svg>
+              </div>
+              <span class="tool-label">Prototype</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel__row">
+          <div class="card card--two">
+            <div class="card__column">
+              <div class="card__avatar">
+                <img src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/535.jpg" alt="" />
+              </div>
+            </div>
+            <div class="card__content">
+              <div class="card__details">
+                <div class="text"></div>
+                <div class="image notion">
+                  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <title>Notion</title>
+                    <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" />
+                  </svg>
+                </div>
+                <div class="text"></div>
+              </div>
+            </div>
+            <div class="card__column">
+              <div class="card__company zapier">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>Zapier</title>
+                  <path d="M15.5348,8.4652 L15.2529,8.7471 C14.2725,9.7275 12.9766,10.2714 11.6008,10.2714 C11.5974,10.2714 11.5941,10.2714 11.5907,10.2714 L11.5907,10.2714 C11.5874,10.2714 11.584,10.2714 11.5807,10.2714 C10.2048,10.2714 8.909,9.7275 7.9286,8.7471 L7.6467,8.4652 C6.6663,9.4457 6.1224,10.7415 6.1224,12.1173 C6.1224,12.1207 6.1224,12.124 6.1224,12.1274 C6.1224,12.1307 6.1224,12.1341 6.1224,12.1374 C6.1224,13.5132 6.6663,14.809 7.6467,15.7894 L7.9286,16.0713 C8.909,15.0909 10.2048,14.5471 11.5807,14.5471 C11.584,14.5471 11.5874,14.5471 11.5907,14.5471 L11.5907,14.5471 C11.5941,14.5471 11.5974,14.5471 11.6008,14.5471 C12.9766,14.5471 14.2725,15.0909 15.2529,16.0713 L15.5348,16.3532 C16.5152,15.3728 17.059,14.077 17.059,12.7012 C17.059,12.6978 17.059,12.6945 17.059,12.6912 C17.059,12.6878 17.059,12.6845 17.059,12.6812 C17.059,11.3053 16.5152,10.0095 15.5348,9.0291 L15.5348,8.4652 Z M18.3639,5.6361 L16.9497,7.0503 C15.5929,5.6935 13.7929,4.9336 11.8815,4.9079 L11.8815,4.9079 L11.8815,4.9079 C11.8745,4.9078 11.8675,4.9076 11.8605,4.9075 C11.8395,4.9073 11.8185,4.9071 11.7975,4.9071 C11.7908,4.9071 11.784,4.9071 11.7773,4.9072 C11.7565,4.9072 11.7357,4.9074 11.715,4.9077 L11.715,4.9077 L11.715,4.9077 C9.8036,4.9334 8.0036,5.6933 6.6468,7.0501 L5.2327,5.6361 C6.9705,3.8983 9.3024,2.9118 11.7976,2.8858 C11.8117,2.8857 11.8259,2.8857 11.84,2.8857 C11.8541,2.8857 11.8683,2.8857 11.8824,2.8858 C14.3776,2.9118 16.7095,3.8983 18.4473,5.6361 L18.3639,5.6361 Z M12.8162,12.4093 C12.8162,12.9617 12.3686,13.4093 11.8162,13.4093 C11.2639,13.4093 10.8162,12.9617 10.8162,12.4093 C10.8162,11.857 11.2639,11.4093 11.8162,11.4093 C12.3686,11.4093 12.8162,11.857 12.8162,12.4093 Z M5.6361,18.3639 L7.0503,16.9497 C8.4071,18.3065 10.2071,19.0664 12.1185,19.0921 L12.1185,19.0921 C12.1395,19.0924 12.1605,19.0926 12.1815,19.0927 C12.1932,19.0928 12.2049,19.0928 12.2167,19.0928 C12.2284,19.0928 12.2401,19.0928 12.2518,19.0927 C12.2728,19.0926 12.2938,19.0924 12.3148,19.0921 L12.3148,19.0921 C14.2262,19.0664 16.0262,18.3065 17.383,16.9497 L18.7972,18.3639 C17.0594,20.1017 14.7275,21.0882 12.2323,21.1142 C12.2182,21.1143 12.204,21.1143 12.1899,21.1143 C12.1758,21.1143 12.1616,21.1143 12.1475,21.1142 C9.6523,21.0882 7.3204,20.1017 5.5826,18.3639 L5.6361,18.3639 Z M0,12 C0,5.3726 5.3726,0 12,0 C18.6274,0 24,5.3726 24,12 C24,18.6274 18.6274,24 12,24 C5.3726,24 0,18.6274 0,12 Z"/>
+                </svg>
+              </div>
+              <span class="tool-label">Automate</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel__row">
+          <div class="card card--six">
+            <div class="card__column">
+              <div class="card__avatar">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>HubSpot</title>
+                  <path fill="#FF7A59" d="M18.164 7.93V5.084a2.198 2.198 0 0 0 1.267-1.984v-.065A2.2 2.2 0 0 0 17.23.836h-.065A2.2 2.2 0 0 0 14.967 3.035v.065c0 .867.506 1.617 1.239 1.97v2.862a5.667 5.667 0 0 0-2.772 1.177L5.447 3.2a2.455 2.455 0 0 0 .053-.494 2.462 2.462 0 1 0-2.462 2.462c.378 0 .736-.087 1.055-.24l7.87 5.837a5.706 5.706 0 0 0-.07 10.8l-.053.053a2.44 2.44 0 0 0-.05.488 2.462 2.462 0 1 0 2.462-2.462c-.387 0-.752.092-1.076.254l-.053-.053a5.67 5.67 0 0 0 2.038-3.515 5.707 5.707 0 0 0-2.983-5.724 5.667 5.667 0 0 0 2.772-1.177l7.98 5.924c-.153.319-.24.674-.24 1.049a2.462 2.462 0 1 0 2.463-2.462c-.377 0-.735.086-1.054.239l-7.871-5.837a5.706 5.706 0 0 0 .05-.895 5.67 5.67 0 0 0-2.118-4.415zm-.969 9.282a2.916 2.916 0 1 1 0-5.832 2.916 2.916 0 0 1 0 5.832z"/>
+                </svg>
+                <img src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/332.jpg" alt="" />
+              </div>
+              <div class="card__dummy">
+                <div class="text-wrap">
+                  <div class="text"></div>
+                  <div class="text"></div>
+                </div>
+                <div class="grid">
+                  <div class="grid__panel"></div>
+                  <div class="grid__panel"></div>
+                  <div class="grid__panel"></div>
+                  <div class="grid__panel"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card__content">
+              <div class="card__details">
+                <div class="text"></div>
+                <div class="image tally">
+                  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <title>Tally</title>
+                    <path d="M4.573 0v4.573H0v4.572h4.573v4.573h4.572V9.145h4.573V4.573H9.145V0Zm9.709 10.282v4.573h-4.573v4.572h4.573V24h4.572v-4.573H24v-4.572h-4.573v-4.573Z"/>
+                  </svg>
+                </div>
+                <div class="text"></div>
+              </div>
+            </div>
+            <div class="card__column">
+              <div class="card__company stripe">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>Stripe</title>
+                  <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/>
+                </svg>
+              </div>
+              <span class="tool-label">Payments</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel__row">
+          <div class="card card--five">
+            <div class="card__column">
+              <div class="card__avatar">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>Calendly</title>
+                  <path fill="#006BFF" d="M19.655 14.262c.281 0 .557.023.828.064 0 .005-.005.01-.005.014-.105.267-.234.534-.381.786l-1.219 2.106c-1.112 1.936-3.177 3.127-5.411 3.127h-2.432c-2.23 0-4.294-1.191-5.412-3.127l-1.218-2.106a6.251 6.251 0 0 1 0-6.252l1.218-2.106C6.736 4.832 8.8 3.641 11.035 3.641h2.432c2.23 0 4.294 1.191 5.411 3.127l1.219 2.106c.147.252.271.519.381.786 0 .004.005.009.005.014-.267.041-.543.064-.828.064-1.816 0-2.501-.607-3.291-1.306-.764-.676-1.711-1.517-3.44-1.517h-1.029c-1.251 0-2.387.455-3.2 1.278-.796.805-1.233 1.904-1.233 3.099v1.411c0 1.196.437 2.295 1.233 3.099.813.823 1.949 1.278 3.2 1.278h1.034c1.729 0 2.676-.841 3.439-1.517.791-.703 1.471-1.306 3.287-1.301Z"/>
+                </svg>
+                <img src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1011.jpg" alt="" />
+              </div>
+              <div class="card__dummy">
+                <div class="text-wrap">
+                  <div class="text"></div>
+                  <div class="text"></div>
+                </div>
+                <div class="grid">
+                  <div class="grid__panel"></div>
+                  <div class="grid__panel"></div>
+                  <div class="grid__panel"></div>
+                  <div class="grid__panel"></div>
+                </div>
+                <div class="cta"></div>
+              </div>
+            </div>
+            <div class="card__content">
+              <div class="card__details">
+                <div class="text"></div>
+                <div class="image make">
+                  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <title>Make</title>
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 17.787a.915.915 0 0 1-.468.122H6.574a.915.915 0 0 1-.793-1.372l5.426-9.398a.915.915 0 0 1 1.586 0l5.426 9.398a.915.915 0 0 1-.325 1.25z"/>
+                  </svg>
+                </div>
+                <div class="text"></div>
+              </div>
+            </div>
+            <div class="card__column">
+              <div class="card__company mailchimp">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>Mailchimp</title>
+                  <path d="M18.824 10.512a4.344 4.344 0 0 0-1.157.159c-.178-.325-.39-.626-.622-.903.482-.588.872-1.258 1.105-1.983a3.57 3.57 0 0 0 .134-1.906c-.194-.711-.695-1.262-1.262-1.522-.567-.26-1.275-.317-2.05-.113a5.787 5.787 0 0 0-1.622.739 9.307 9.307 0 0 0-2.238-1.85C9.464 2.18 7.68 1.774 6.16 2.138c-1.52.364-2.652 1.462-3.131 2.778-.48 1.315-.378 2.854.109 4.43.23.744.541 1.45.914 2.1a4.472 4.472 0 0 0-1.218 2.214c-.22 1.066-.024 2.14.397 3.058.423.918 1.106 1.699 1.967 2.196.862.497 1.905.762 3.028.605a4.78 4.78 0 0 0 1.88-.663c.334.214.692.398 1.064.548 1.003.403 2.03.513 2.99.407a5.41 5.41 0 0 0 2.443-.941 4.96 4.96 0 0 0 1.648-2.082c.394-.882.542-1.875.445-2.87a4.34 4.34 0 0 0 3.149-4.18 4.344 4.344 0 0 0-2.02-3.727zm-7.305 8.556c-.26.117-.54.208-.832.265a3.56 3.56 0 0 1-2.12-.18 3.56 3.56 0 0 1-1.637-1.319c-.397-.577-.626-1.293-.615-2.084.008-.565.147-1.107.381-1.59a6.846 6.846 0 0 0 1.95 1.637 8.13 8.13 0 0 0 2.24.947c.21.056.418.106.624.148a4.134 4.134 0 0 1 .009 2.176zm1.37-4.32a6.14 6.14 0 0 1-2.085-.827 5.115 5.115 0 0 1-1.578-1.494 3.27 3.27 0 0 1-.504-1.588 1.95 1.95 0 0 1 .233-1.045c.16-.287.399-.525.69-.688.29-.163.632-.251 1-.251.367 0 .76.088 1.159.264a4.11 4.11 0 0 1 1.413 1.096c.392.458.701.98.913 1.513.213.533.328 1.078.338 1.577a2.73 2.73 0 0 1-.087.722c-.052.183-.126.337-.218.456a.666.666 0 0 1-.294.212.867.867 0 0 1-.382.053 2.89 2.89 0 0 1-.598 0z"/>
+                </svg>
+              </div>
+              <span class="tool-label">Email</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel__row">
+          <div class="card card--four">
+            <div class="card__column">
+              <div class="card__avatar">
+                <img src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/47.jpg" alt="" />
+              </div>
+            </div>
+            <div class="card__content">
+              <div class="card__details">
+                <div class="text"></div>
+                <div class="image wordpress">
+                  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <title>WordPress</title>
+                    <path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.109m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.607-3.582.607M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/>
+                  </svg>
+                </div>
+                <div class="text"></div>
+                <div class="card__dummy">
+                  <div class="text-wrap">
+                    <div class="text"></div>
+                    <div class="text"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card__column">
+              <div class="card__company airtable">
+                <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title>Airtable</title>
+                  <path d="M11.992 1.966L1.438 6.231c-.39.157-.387.702.003.855l10.549 4.111a1.194 1.194 0 0 0 .869-.001l10.469-4.11c.39-.154.391-.7-.001-.856L12.862 1.967a1.194 1.194 0 0 0-.87-.001zm.868 12.253V23c0 .398.427.655.786.472l10.169-5.195c.244-.124.398-.374.398-.646v-8.665c0-.399-.429-.656-.788-.471l-10.17 5.285a.528.528 0 0 0-.395.439zM10.14 14.158l-8.017 4.258c-.358.19-.79-.072-.79-.471v-8.498c0-.262.142-.504.37-.633l9.126-4.79v9.505a.62.62 0 0 1-.689.629z"/>
+                </svg>
+              </div>
+              <span class="tool-label">Database</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroller">
+    <div class="content">
+      <div class="panel">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  // Cache window dimensions to prevent forced reflows
+  const windowWidth = window.innerWidth;
+  const isMobile = windowWidth < 768;
+  
+  // Use CSS scroll-driven animations when supported, otherwise use GSAP
+  if (!CSS.supports('animation-timeline: scroll()')) {
+    // Original spread values - cards positioned near viewport edges
+    const spreadMultiplier = isMobile ? 0.35 : 0.45;
+    const minSpread = isMobile ? 120 : 260;
+    
+    const CONFIG = [
+      {
+        x: (_index: number, _el: Element) => {
+          return Math.max(minSpread, windowWidth * spreadMultiplier) * -1;
+        },
+        y: -10,
+        r: isMobile ? -6 : -8,
+        h: isMobile ? 150 : 160,
+        w: (_index: number, el: Element) => {
+          return Math.max(isMobile ? 240 : 320, (el.parentNode as HTMLElement).offsetWidth * 0.55);
+        },
+      },
+      {
+        x: (_index: number, _el: Element) => {
+          return Math.max(minSpread, windowWidth * spreadMultiplier) * 1;
+        },
+        y: isMobile ? -45 : -50,
+        r: isMobile ? 12 : 15,
+        h: isMobile ? 320 : 360,
+        w: (_index: number, el: Element) => {
+          return Math.max(isMobile ? 180 : 220, (el.parentNode as HTMLElement).offsetWidth * 0.3);
+        },
+      },
+      {
+        x: (_index: number, _el: Element) => {
+          return Math.max(minSpread, windowWidth * spreadMultiplier) * -1;
+        },
+        y: isMobile ? -25 : -30,
+        r: isMobile ? 5 : 6,
+        h: isMobile ? 280 : 300,
+        w: (_index: number, el: Element) => {
+          return Math.max(isMobile ? 260 : 330, (el.parentNode as HTMLElement).offsetWidth * 0.55);
+        },
+      },
+      {
+        x: (_index: number, _el: Element) => {
+          return Math.max(minSpread, windowWidth * spreadMultiplier) * 1;
+        },
+        y: isMobile ? -25 : -30,
+        r: isMobile ? -4 : -5,
+        h: isMobile ? 360 : 400,
+        w: (_index: number, el: Element) => {
+          return Math.max(isMobile ? 240 : 305, (el.parentNode as HTMLElement).offsetWidth * 0.45);
+        },
+      },
+      {
+        x: (_index: number, _el: Element) => {
+          return Math.max(minSpread, windowWidth * spreadMultiplier) * -1;
+        },
+        y: isMobile ? -40 : -45,
+        r: isMobile ? -15 : -20,
+        h: isMobile ? 480 : 525,
+        w: (_index: number, el: Element) => {
+          return Math.max(isMobile ? 140 : 160, (el.parentNode as HTMLElement).offsetWidth * 0.3);
+        },
+      },
+      {
+        x: (_index: number, _el: Element) => {
+          return Math.max(minSpread, windowWidth * spreadMultiplier) * 1;
+        },
+        y: isMobile ? 8 : 10,
+        r: isMobile ? 8 : 10,
+        h: isMobile ? 150 : 160,
+        w: (_index: number, el: Element) => {
+          return Math.max(isMobile ? 240 : 320, (el.parentNode as HTMLElement).offsetWidth * 0.55);
+        },
+      },
+    ];
+
+    gsap.registerPlugin(ScrollTrigger);
+    console.info('gsap: ScrollTrigger registered');
+
+    gsap.set('.hero', { position: 'absolute' });
+
+    const cards = document.querySelectorAll('.card');
+
+    for (const [index, card] of [...cards].entries()) {
+      if (CONFIG[index]) {
+        gsap.from(card, {
+          x: CONFIG[index].x,
+          yPercent: CONFIG[index].y,
+          height: `${CONFIG[index].h}%`,
+          rotate: CONFIG[index].r,
+          width: CONFIG[index].w,
+          scrollTrigger: {
+            trigger: '.scroller',
+            start: 'top bottom',
+            end: 'top 50%',
+            scrub: true,
+          },
+        });
+      }
+    }
+
+    gsap.from(
+      [
+        '.card__content',
+        '.card--two .card__column:last-of-type',
+        '.card--three .card__column:last-of-type',
+        '.card--five .card__column:last-of-type',
+      ],
+      {
+        y: '-100cqh',
+        scrollTrigger: {
+          trigger: '.scroller',
+          start: 'top 80%',
+          end: 'top top',
+          scrub: true,
+        },
+      }
+    );
+    gsap.from(['.card__avatar img', '.password svg'], {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: '.scroller',
+        start: 'top 50%',
+        end: 'top top',
+        scrub: true,
+      },
+    });
+    gsap.from(['.card--five .card__dummy', '.card--six .card__dummy'], {
+      width: (_index: number, el: Element) => (el.parentNode as HTMLElement).offsetWidth * 0.26,
+      scrollTrigger: {
+        trigger: '.scroller',
+        start: 'top 80%',
+        end: 'top top',
+        scrub: true,
+      },
+    });
+    gsap.from(['.card--one .card__avatar', '.card--four .card__avatar'], {
+      scale: 2,
+      scrollTrigger: {
+        trigger: '.scroller',
+        start: 'top bottom',
+        end: 'top top',
+        scrub: true,
+      },
+    });
+    gsap.from('.card--two .card__avatar', {
+      width: (_index: number, el: Element) => (Math.max(330, (el.parentNode as HTMLElement).offsetWidth * 0.55) - 32),
+      borderRadius: '12px',
+      height: 'calc(300cqh - 2rem)',
+      scrollTrigger: {
+        trigger: '.scroller',
+        start: 'top bottom',
+        end: 'top 20%',
+        scrub: true,
+      },
+    });
+    gsap.from('.card--six .card__column:last-of-type .card__company', {
+      width: 120,
+      x: '-1rem',
+      scrollTrigger: {
+        trigger: '.scroller',
+        start: 'top bottom',
+        end: 'top 20%',
+        scrub: true,
+      },
+    });
+    gsap.from('.cta', {
+      scale: 1,
+      scrollTrigger: {
+        trigger: '.scroller',
+        start: 'top bottom',
+        end: 'top 20%',
+        scrub: true,
+      },
+    });
+  }
+</script>
+
+<style is:global>
+:root {
+  --border: hsl(0 0% 80%);
+  --card: hsl(0 0% 98%);
+  --element: hsl(0 0% 90%);
+  --accent: #0047AB;
+  --panel: hsl(210 50% 98%);
+  --entity-size: 30px;
+}
+
+.hero-section {
+  min-height: 200vh;
+  position: relative;
+  width: 100%;
+  timeline-scope: --scroller;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border: none;
+  border-bottom: none;
+  background: transparent;
+}
+
+@media (min-width: 769px) {
+  .hero-section {
+    min-height: 200vh;
+  }
+}
+
+/* Mobile responsive animation */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 150vh;
+  }
+  
+  .hero {
+    position: relative;
+  }
+  
+  .panel {
+    width: clamp(260px, 85vw, 400px);
+    padding: 1rem;
+    gap: 0.5rem;
+    grid-template-rows: repeat(6, 45px);
+    --span: max(35vw, 120px);
+  }
+  
+  .card--three .card__dummy,
+  .card--five .card__dummy,
+  .card--six .card__dummy {
+    min-width: 160px;
+  }
+  
+  .grid {
+    width: calc(100% - 2rem);
+  }
+  
+  :root {
+    --entity-size: 24px;
+  }
+}
+
+.hero {
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+  padding-top: 2rem;
+}
+
+.hero .content {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw + 0.5rem, 4rem);
+  width: 20ch;
+  max-width: calc(100vw - 2rem);
+  font-weight: 700;
+  text-wrap: balance;
+  text-align: center;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  padding: 0 1rem;
+}
+
+.hero h1 span {
+  color: hsl(260 80% 50%);
+}
+
+.hero p {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(0.875rem, 1vw + 0.5rem, 1.25rem);
+  max-width: min(75%, 600px);
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 1rem;
+  color: #4A4A4A;
+}
+
+/* CTA style matching FAQ CTA component */
+.hero a {
+  color: white;
+  background: var(--accent);
+  text-decoration: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.hero a:hover {
+  transform: scale(1.05);
+  background: #003d94;
+}
+
+/* Arrow icon for CTA */
+.hero a::after {
+  content: "";
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='white' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 8l4 4m0 0l-4 4m4-4H3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+}
+
+.hero a:hover::after {
+  transform: translateX(2px);
+}
+
+.sticker {
+  width: 100%;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.sticker .content {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.scroller {
+  position: relative;
+  min-height: 200vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  view-timeline: --scroller;
+}
+
+.scroller .content {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panel {
+  width: clamp(320px, 50vw, 750px);
+  max-width: calc(100vw - 2rem);
+  border-radius: 18px;
+  border: 2px solid var(--accent);
+  display: grid;
+  grid-template-rows: repeat(6, 60px);
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+  box-shadow: 0 32px 32px rgba(23,22,24,.04),0 16px 16px rgba(23,22,24,.04),0 8px 8px rgba(23,22,24,.04);
+  --span: max(45vw, 260px);
+}
+
+/* Responsive adjustments for tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .panel {
+    width: clamp(280px, 45vw, 600px);
+    padding: 1.5rem;
+    gap: 0.75rem;
+    grid-template-rows: repeat(6, 50px);
+  }
+}
+
+.scroller .panel {
+  background: var(--panel);
+}
+
+.scroller .panel div {
+  display: none;
+}
+
+.sticker .panel {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.panel__row {
+  container-type: size;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  align-items: start;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100cqh;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 4px rgba(23,22,24,.04), 0 1px 2px rgba(23,22,24,.04);
+}
+
+.card__column {
+  width: 100cqh;
+  height: 100cqh;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.card__column:last-of-type {
+  align-self: flex-end;
+}
+
+.card__avatar {
+  height: var(--entity-size);
+  aspect-ratio: 1;
+  background: var(--element);
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card__avatar * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.image svg {
+  width: 50%;
+}
+
+.card__avatar img {
+  z-index: 2;
+}
+
+.card--one .card__column:first-of-type,
+.card--four .card__column:first-of-type,
+.card--two .card__column:first-of-type {
+  align-self: center;
+}
+
+.card__content {
+  flex: 1;
+}
+
+.card__details {
+  height: 100cqh;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 58cqi;
+  position: relative;
+}
+
+.card__dummy .text {
+  flex: 0 1 auto;
+}
+
+.card--one .card__dummy,
+.card--four .card__dummy {
+  padding-left: 2rem;
+}
+
+.card--one .card__dummy .text:first-of-type,
+.card--four .card__dummy .text:first-of-type {
+  width: 85%;
+}
+
+.card--one .card__dummy .text:last-of-type,
+.card--four .card__dummy .text:last-of-type {
+  width: 55%;
+}
+
+.card__dummy {
+  height: 160cqh;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.text {
+  height: 0.8rem;
+  background: var(--element);
+  border-radius: 100px;
+  flex: 1;
+}
+
+.image {
+  height: var(--entity-size);
+  aspect-ratio: 1;
+  background: var(--element);
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.card__company {
+  height: var(--entity-size);
+  aspect-ratio: 1;
+  background: var(--element);
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+/* Web Development Brand Colors */
+.figma { background: #F24E1E; }
+.webflow { background: #4353FF; }
+.shopify { background: #7AB55C; }
+.framer { background: #0055FF; }
+.notion { background: #000000; }
+.zapier { background: #FF4A00; }
+.hubspot { background: #FF7A59; }
+.tally { background: #000000; }
+.stripe { background: #635BFF; }
+.calendly { background: #006BFF; }
+.make { background: #6D00CC; }
+.mailchimp { background: #FFE01B; }
+.wordpress { background: #21759B; }
+.airtable { background: #18BFFF; }
+
+/* Tool labels - subtle text under icons */
+.tool-label {
+  position: absolute;
+  bottom: -1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card__column {
+  position: relative;
+}
+
+.card:hover .tool-label,
+.panel:hover .tool-label {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .tool-label {
+    font-size: 0.5rem;
+    bottom: -1rem;
+  }
+}
+
+:where(.image, .card__company) path {
+  fill: white;
+}
+
+.card__company svg {
+  width: 50%;
+}
+
+.card--one {
+  --x: calc(var(--span) * -1);
+  --y: -10%;
+  --r: -8deg;
+  --h: 160%;
+  --w: max(55cqi, 320px);
+}
+
+.card--two {
+  --x: calc(var(--span) * -1);
+  --y: -30%;
+  --r: 6deg;
+  --h: 300%;
+  --w: max(55cqi, 330px);
+}
+
+.card--three {
+  --x: calc(var(--span) * 1);
+  --y: -50%;
+  --r: 15deg;
+  --h: 360%;
+  --w: max(30cqi, 220px);
+}
+
+.card--four {
+  --x: calc(var(--span) * 1);
+  --y: 10%;
+  --r: 10deg;
+  --h: 160%;
+  --w: max(55cqi, 320px);
+}
+
+.card--five {
+  --x: calc(var(--span) * -1);
+  --y: -45%;
+  --r: -20deg;
+  --h: 525%;
+  --w: max(30cqi, 160px);
+}
+
+.card--six {
+  --x: calc(var(--span) * 1);
+  --y: -30%;
+  --r: -5deg;
+  --h: 400%;
+  --w: max(45cqi, 305px);
+}
+
+/* Mobile card adjustments for CSS scroll-driven animations */
+@media (max-width: 768px) {
+  .card--one {
+    --r: -6deg;
+    --h: 150%;
+    --w: max(55cqi, 240px);
+  }
+
+  .card--two {
+    --y: -25%;
+    --r: 5deg;
+    --h: 280%;
+    --w: max(55cqi, 260px);
+  }
+
+  .card--three {
+    --y: -45%;
+    --r: 12deg;
+    --h: 320%;
+    --w: max(30cqi, 180px);
+  }
+
+  .card--four {
+    --y: 8%;
+    --r: 8deg;
+    --h: 150%;
+    --w: max(55cqi, 240px);
+  }
+
+  .card--five {
+    --y: -40%;
+    --r: -15deg;
+    --h: 480%;
+    --w: max(30cqi, 140px);
+  }
+
+  .card--six {
+    --y: -25%;
+    --r: -4deg;
+    --h: 360%;
+    --w: max(45cqi, 240px);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .hero {
+    position: absolute;
+  }
+
+  .card {
+    animation: grow both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  .card__avatar img {
+    animation: fade-in both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  @keyframes fade-in {
+    0%, 50% { opacity: 0; }
+  }
+
+  .password svg {
+    animation: fade-in both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  .card__content {
+    animation: slide both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  .card--one .card__avatar,
+  .card--four .card__avatar {
+    --s: 2;
+    transform-origin: 0 50%;
+    animation: morph both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  .card--two .card__avatar {
+    animation: shrink both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  .card--two .card__column:last-of-type,
+  .card--three .card__column:last-of-type,
+  .card--five .card__column:last-of-type {
+    animation: slide both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  .card--six .card__column:last-of-type .card__company {
+    animation: cta-morph both linear, color-in both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  .card--five .card__dummy,
+  .card--six .card__dummy {
+    animation: expand both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  .cta {
+    animation: morph both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 0%;
+  }
+
+  @keyframes cta-morph {
+    0%, 30% {
+      translate: -1rem 0;
+      width: 120px;
+    }
+  }
+
+  @keyframes color-in {
+    0%, 50% {
+      background: var(--element);
+    }
+  }
+
+  @keyframes expand {
+    0%, 30% {
+      width: var(--w, 26cqi);
+    }
+  }
+
+  @keyframes shrink {
+    0%, 30% {
+      width: calc(var(--w) - 2rem);
+      border-radius: 12px;
+      height: calc(300cqh - 2rem);
+    }
+    85% {
+      height: var(--entity-size);
+      width: var(--entity-size);
+    }
+  }
+
+  @keyframes grow {
+    0% {
+      translate: var(--x, 0) var(--y, 0);
+      height: var(--h, 100%);
+      rotate: var(--r, 0);
+      width: var(--w, 10cqi);
+    }
+    15% {
+      rotate: var(--r, 0);
+    }
+    30% {
+      rotate: 0deg;
+      height: var(--h, 100%);
+      width: calc(var(--w, 10cqi));
+      translate: 0 var(--y, 0);
+    }
+  }
+
+  @keyframes morph {
+    0% {
+      scale: var(--s);
+    }
+  }
+
+  @keyframes slide {
+    0%, 30% {
+      translate: 0 -100cqh;
+    }
+    100% {
+      translate: 0 0;
+    }
+  }
+}
+
+.card--one .card__avatar,
+.card--four .card__avatar {
+  --s: 2;
+  transform-origin: 0 50%;
+}
+
+.card--two .card__avatar {
+  position: absolute;
+  z-index: 4;
+  left: 1rem;
+  width: var(--entity-size);
+  max-width: calc(100cqi - 2rem);
+}
+
+.card--two .card__column:last-of-type,
+.card--three .card__column:last-of-type,
+.card--five .card__column:last-of-type {
+  align-self: flex-start;
+}
+
+.card--six .card__column:last-of-type {
+  align-self: start;
+  width: auto;
+  min-width: 60px;
+}
+
+.card--six .card__column:last-of-type .card__company {
+  border-radius: 100px;
+  width: var(--entity-size);
+}
+
+.card--three .card__dummy,
+.card--five .card__dummy,
+.card--six .card__dummy {
+  width: 30cqi;
+  min-width: 220px;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  height: 260%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.card--five .card__dummy {
+  height: 425%;
+}
+
+.card--six .card__dummy {
+  height: 280%;
+}
+
+.card--three .text:last-of-type {
+  width: 45%;
+}
+
+.card--five .card__dummy,
+.card--six .card__dummy {
+  gap: 1rem;
+  width: 34cqi;
+}
+
+.card--six .card__dummy {
+  --w: 250px;
+}
+
+.card--six .grid__panel {
+  aspect-ratio: 2 / 1;
+}
+
+.text-wrap {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 65%;
+}
+
+.text-wrap :first-child { width: 100%; }
+.text-wrap :last-child { width: 80%; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  width: calc(100% - 4rem);
+}
+
+.grid__panel {
+  aspect-ratio: 1;
+  background: var(--element);
+  border-radius: 12px;
+}
+
+.cta {
+  height: var(--entity-size);
+  width: 60%;
+  background: var(--accent);
+  border-radius: 100px;
+  scale: 0;
+  --s: 1;
+}
+
+/* Ensure smooth transition between hero and next section */
+.hero-section + section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: none !important;
+}
+</style>

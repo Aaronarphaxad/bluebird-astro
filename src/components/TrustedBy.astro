@@ -1,0 +1,38 @@
+---
+// Repurposed: ideal businesses/people + service benefits (no client logos)
+const idealFor = ['Professional services', 'Contractors', 'Founders', 'Marketing teams', 'Startups', 'Small business'];
+const benefits = ['Fast launch', 'Conversion-focused', 'Ongoing support'];
+// Duplicate for seamless scroll
+const scrollItems = [...idealFor, ...idealFor];
+---
+
+<section class="relative py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-bg overflow-hidden" aria-label="Who we help and what you get">
+	<div class="relative max-w-6xl mx-auto">
+		<p class="font-body text-section-tiny font-medium text-center text-textMuted mb-6">
+			Ideal for
+		</p>
+		<div class="logo-scroll-container overflow-hidden">
+			<div class="logo-scroll flex gap-10 sm:gap-14">
+				{scrollItems.map((label) => (
+					<div class="flex items-center justify-center flex-shrink-0">
+						<span class="font-body text-section-subheading font-medium text-textMuted">{label}</span>
+					</div>
+				))}
+			</div>
+		</div>
+		
+	</div>
+</section>
+
+<style>
+	.logo-scroll {
+		animation: scroll 20s linear infinite;
+	}
+	@keyframes scroll {
+		0% { transform: translateX(0); }
+		100% { transform: translateX(-50%); }
+	}
+	.logo-scroll-container:hover .logo-scroll {
+		animation-play-state: paused;
+	}
+</style>

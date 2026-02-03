@@ -1,0 +1,37 @@
+[
+	{
+		"id": "axiom-zurich",
+		"title": "AXIOM.",
+		"summary": "Precision-engineered cloud infrastructure platform with global deployment, observability, and transparent pricing.",
+		"tags": ["Landing Page", "SaaS"],
+		"viewUrl": "https://axiomzurich.vercel.app/"
+	},
+	{
+		"id": "advancedaps",
+		"title": "Advanced APS",
+		"summary": "Automotive SaaS platform for car dealerships to manage service appointments and inventory.",
+		"tags": ["Landing Page", "Automitive SaaS"],
+		"viewUrl": "https://morning-limit-cc8d.aaronarphaxad.workers.dev/"
+	},
+	{
+		"id": "elimu-international",
+		"title": "Elimu International",
+		"summary": "Education consultancy site helping African students plan, apply, and prepare for studying in Canada.",
+		"tags": ["Marketing Site", "Education"],
+		"viewUrl": "https://elimunoww.vercel.app/"
+	},
+	{
+		"id": "ney-neys-kitchen",
+		"title": "Ney Ney's Kitchen",
+		"summary": "Restaurant site for premium Nigerian cuisine with an easy pre-order flow and menu browsing experience.",
+		"tags": ["Food & Beverage", "Conversion"],
+		"viewUrl": "https://neyneyskitchen.vercel.app/"
+	},
+	{
+		"id": "jason-garage-doors",
+		"title": "Jason Garage Doors",
+		"summary": "Service-business website showcasing garage door installation and repair services with clear CTAs and service areas.",
+		"tags": ["Local Services", "Lead Gen"],
+		"viewUrl": "https://mws-garage-door.vercel.app/"
+	}
+]

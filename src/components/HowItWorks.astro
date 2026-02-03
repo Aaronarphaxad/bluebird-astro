@@ -1,0 +1,97 @@
+---
+// How It Works – horizontal step chain on desktop, vertical on mobile
+import step1 from '../content/process-steps/step-1.json';
+import step2 from '../content/process-steps/step-2.json';
+import step3 from '../content/process-steps/step-3.json';
+import step4 from '../content/process-steps/step-4.json';
+
+const steps = [
+	{ entry: step1 },
+	{ entry: step2 },
+	{ entry: step3 },
+	{ entry: step4 },
+];
+const sortedSteps = steps.sort((a, b) => (a.entry.order || 0) - (b.entry.order || 0));
+
+// Icons per step: call, proposal, build, launch
+const stepIcons = [
+	'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+	'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
+	'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+	'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>',
+];
+---
+
+<section id="how-it-works" class="relative py-36 sm:py-46 md:py-46 px-4 sm:px-6 lg:px-8 bg-bg overflow-hidden" aria-label="How it works">
+	<div class="relative max-w-5xl mx-auto">
+		<!-- Section header -->
+		<div class="text-center mb-10 sm:mb-12 md:mb-14" data-scroll-reveal>
+			<p class="font-body text-section-tiny font-medium text-textMuted mb-3">
+				How it works
+			</p>
+			<h2 class="font-headline text-section-header font-medium text-text mb-1">
+				From concept to launch
+			</h2>
+			<p class="font-body text-section-subheading font-medium text-textMuted max-w-md mx-auto">
+				A streamlined process designed to get your website live quickly.
+			</p>
+		</div>
+
+		<!-- Steps – horizontal chain on desktop, vertical on mobile; narrower cards, smaller type -->
+		<div class="flex flex-col gap-2 lg:flex-row lg:gap-5 lg:items-stretch lg:justify-center max-w-4xl mx-auto">
+			{sortedSteps.map((step, index) => (
+				<>
+					<div class="group relative flex flex-col lg:flex-1 lg:max-w-[240px]">
+						{/* Single line between cards on mobile */}
+						{index > 0 && (
+							<div aria-hidden="true" class="lg:hidden h-px w-full bg-accentSubtle/80 flex-shrink-0 mb-2" />
+						)}
+
+						<div class="relative p-4 sm:p-5 lg:px-4 rounded-2xl bg-white border border-accentSubtle/50 shadow-sm hover:shadow-lg hover:border-accent/30 transition-all duration-300 flex-1 flex flex-col">
+						{/* Background step number */}
+						<span
+							aria-hidden="true"
+							class="absolute top-3 left-3 lg:top-4 lg:left-4 font-body text-5xl sm:text-6xl lg:text-5xl font-normal text-accentSubtle/70 select-none pointer-events-none leading-none"
+						>
+							{String(index + 1).padStart(2, '0')}
+						</span>
+
+						{/* Icon */}
+						<div class="relative z-10 w-9 h-9 flex items-center justify-center rounded-xl bg-accentSubtle/40 text-accent mb-3 [&_svg]:shrink-0 [&_svg]:w-5 [&_svg]:h-5" set:html={stepIcons[index]} />
+
+						{/* Title */}
+						<h3 class="font-body text-sm font-medium text-text tracking-tight mb-1.5 group-hover:text-accent transition-colors relative z-10">
+							{step.entry.title}
+						</h3>
+
+						{/* Description */}
+						<p class="font-body text-xs font-medium text-textMuted leading-relaxed relative z-10 flex-1">
+							{step.entry.description}
+						</p>
+						</div>
+					</div>
+					{/* Vertical line between cards on desktop */}
+					{index < sortedSteps.length - 1 && (
+						<div
+							aria-hidden="true"
+							class="hidden lg:block w-px flex-shrink-0 bg-accentSubtle/80 self-stretch"
+						/>
+					)}
+				</>
+			))}
+		</div>
+
+		<!-- CTA – main button style -->
+		<div class="text-center mt-10 sm:mt-12">
+			<a
+				href="#contact"
+				class="inline-flex items-center justify-center gap-2 font-medium rounded-full transition-all duration-300 bg-accent text-white hover:bg-accentDark hover:scale-105 px-5 py-2.5 text-sm  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+			>
+				Get started
+				<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+				</svg>
+			</a>
+		</div>
+	</div>
+</section>

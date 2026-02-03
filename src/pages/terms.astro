@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+	title="Terms of Service | Bluebird"
+	description="Basic terms for using the Bluebird website and contacting our team."
+	canonicalURL="/terms"
+>
+	<section class="relative pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 bg-bg overflow-hidden">
+		<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/3 rounded-full blur-3xl animate-pulse-slow"></div>
+		<div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accentSubtle/30 rounded-full blur-3xl animate-pulse-slow-delay"></div>
+
+		<div class="relative max-w-4xl mx-auto">
+			<h1 class="font-headline text-3xl sm:text-4xl md:text-5xl font-bold text-text leading-tight mb-4">
+				Terms of Service
+			</h1>
+			<p class="text-sm sm:text-base text-textMuted leading-relaxed mb-10">
+				These terms apply to your use of our website and communications with Bluebird.
+			</p>
+
+			<div class="space-y-8">
+				<div class="bg-white rounded-2xl border border-accentSubtle/50 p-6 sm:p-8">
+					<h2 class="font-headline text-lg sm:text-xl font-semibold text-text mb-3">Website use</h2>
+					<p class="text-sm text-textMuted leading-relaxed">
+						You may browse and use this website for lawful purposes. Don’t misuse the site, attempt to disrupt it, or try to access systems or data you
+						aren’t authorized to access.
+					</p>
+				</div>
+
+				<div class="bg-white rounded-2xl border border-accentSubtle/50 p-6 sm:p-8">
+					<h2 class="font-headline text-lg sm:text-xl font-semibold text-text mb-3">No warranties</h2>
+					<p class="text-sm text-textMuted leading-relaxed">
+						This website is provided “as is”. We do our best to keep information accurate and the site available, but we don’t guarantee it will be
+						error-free or uninterrupted.
+					</p>
+				</div>
+
+				<div class="bg-white rounded-2xl border border-accentSubtle/50 p-6 sm:p-8">
+					<h2 class="font-headline text-lg sm:text-xl font-semibold text-text mb-3">Limitation of liability</h2>
+					<p class="text-sm text-textMuted leading-relaxed">
+						To the extent permitted by law, Bluebird is not liable for indirect or consequential damages arising from your use of this website.
+					</p>
+				</div>
+
+				<div class="bg-white rounded-2xl border border-accentSubtle/50 p-6 sm:p-8">
+					<h2 class="font-headline text-lg sm:text-xl font-semibold text-text mb-3">Project engagement</h2>
+					<p class="text-sm text-textMuted leading-relaxed">
+						If you hire Bluebird, project-specific terms (scope, timeline, payments, and deliverables) will be covered in a separate written agreement.
+						Those terms will control over this page for the project work.
+					</p>
+				</div>
+
+				<div class="bg-white rounded-2xl border border-accentSubtle/50 p-6 sm:p-8">
+					<h2 class="font-headline text-lg sm:text-xl font-semibold text-text mb-3">Contact</h2>
+					<p class="text-sm text-textMuted leading-relaxed">
+						Questions about these terms? Email
+						<a href="mailto:info@bluebirdweb.ca" class="text-accent hover:text-accentDark transition-colors">info@bluebirdweb.ca</a>.
+					</p>
+				</div>
+
+				<p class="text-xs text-textMuted">
+					Last updated: {new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
+
+<style>
+	@keyframes pulseSlow {
+		0%,
+		100% {
+			opacity: 0.3;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 0.5;
+			transform: scale(1.1);
+		}
+	}
+
+	.animate-pulse-slow {
+		animation: pulseSlow 8s ease-in-out infinite;
+	}
+
+	.animate-pulse-slow-delay {
+		animation: pulseSlow 8s ease-in-out infinite;
+		animation-delay: 2s;
+	}
+</style>
+

@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RecentProjects from '../components/RecentProjects.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Testimonials from '../components/Testimonials.astro';
+import PricingInteractive from '../components/PricingInteractive';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Hero2 from '@/components/Hero2.astro';
+import ProblemStatement from '@/components/ProblemStatement.astro';
+import WhyChooseUs from '@/components/WhyChooseUs.astro';
+import Services from '@/components/Services.astro';
+import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
+import ReviewSchema from '../components/ReviewSchema.astro';
+---
+
+<Layout
+	title="Bluebird - Custom Websites & Web Applications | Fast, Conversion-Focused"
+	description="We build custom websites and web applications that load fast, rank well, and convert visitors into customers. Fast delivery in 3-6 weeks. Serving businesses across BC, Canada."
+	canonicalURL="/"
+	ogImage="/og-home.jpg"
+	structuredDataType="WebSite"
+	keywords="web development BC, website design Vancouver, custom websites Canada, web applications, e-commerce development, UI/UX design British Columbia, conversion optimization, fast websites, SEO services, web design studio Vancouver"
+>
+	<Hero2 />
+	<ProblemStatement />
+	<WhyChooseUs />
+	<Services />
+	<RecentProjects />
+	<HowItWorks />
+	<Testimonials />
+	<PricingInteractive client:visible />
+	<FAQ />
+	<CTA id="contact" />
+	<Footer />
+	<LocalBusinessSchema />
+	<ReviewSchema />
+</Layout>

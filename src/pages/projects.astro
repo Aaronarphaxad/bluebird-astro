@@ -1,0 +1,139 @@
+---
+import { Image as AstroImage } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import projectsData from '../content/projects.json';
+import projectsPageContent from '../content/pages/projects.json';
+import axiomzurichImg from '../assets/images/featured-projects/axiomzurich.webp';
+import advancedapsImg from '../assets/images/featured-projects/advancedaps.webp';
+import elimunowwImg from '../assets/images/featured-projects/elimunoww.webp';
+import neyneyskitchenImg from '../assets/images/featured-projects/neyneyskitchen.webp';
+import mwsGarageDoorImg from '../assets/images/featured-projects/mws-garage-door.webp';
+
+const { meta, headline, intro, cta } = projectsPageContent;
+const projectImageMap = {
+	'axiom-zurich': axiomzurichImg,
+	'advancedaps': advancedapsImg,
+	'elimu-international': elimunowwImg,
+	'ney-neys-kitchen': neyneyskitchenImg,
+	'jason-garage-doors': mwsGarageDoorImg,
+} as const;
+---
+
+<Layout
+	title={meta.title}
+	description={meta.description}
+	canonicalURL="/projects"
+	ogImage="/og-projects.jpg"
+	keywords="web development portfolio, website projects, custom website examples, web design case studies, British Columbia web development"
+>
+	<section class="relative bg-bg overflow-hidden">
+		<div class="projects-dot-bg" aria-hidden="true"></div>
+
+		<div class="relative pt-28 sm:pt-32 md:pt-36 pb-20 sm:pb-24 md:pb-32 px-4 sm:px-6 lg:px-8">
+			<div class="max-w-7xl mx-auto">
+				<!-- Header Section -->
+				<header class="mb-12 sm:mb-16 md:mb-20">
+					<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end">
+						<div class="lg:col-span-7">
+							<h1 class="font-headline font-semibold text-text leading-[0.9] tracking-[-0.04em] text-[clamp(4rem,12vw,7.5rem)]">
+								{headline}
+							</h1>
+						</div>
+						<div class="lg:col-span-5 lg:pb-3">
+							<p class="text-sm sm:text-base md:text-lg text-textMuted leading-relaxed max-w-prose">
+								{intro}
+							</p>
+						</div>
+					</div>
+				</header>
+
+				<!-- Projects Gallery -->
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
+					{projectsData.map((project, index) => (
+						<article class="group rounded-[28px] bg-white border border-black/5 shadow-[0_1px_0_rgba(0,0,0,0.04)] hover:shadow-[0_14px_38px_rgba(0,0,0,0.10)] transition-shadow duration-300 overflow-hidden">
+							<div class="flex items-start justify-between gap-6 px-6 sm:px-7 pt-6 sm:pt-7">
+								<div class="min-w-0">
+									<h2 class="font-headline text-xl sm:text-2xl font-semibold text-text truncate">
+										{project.title}
+									</h2>
+									{project.summary ? (
+										<p class="mt-2 text-sm text-textMuted leading-relaxed">
+											{project.summary}
+										</p>
+									) : null}
+									{project.tags?.length ? (
+										<ul class="mt-3 flex flex-wrap gap-2" aria-label="Project tags">
+											{project.tags.map((tag) => (
+												<li class="inline-flex items-center px-3 py-1 rounded-full bg-black/5 text-text text-xs sm:text-sm">
+													{tag}
+												</li>
+											))}
+										</ul>
+									) : null}
+								</div>
+
+								<a
+									href={project.viewUrl}
+									class="inline-flex items-center gap-2 rounded-full bg-black/5 px-4 py-2 text-sm text-text hover:bg-black/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+									aria-label={`View ${project.title}`}
+									rel={project.viewUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+									target={project.viewUrl?.startsWith('http') ? '_blank' : undefined}
+								>
+									<span>View</span>
+									<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/70 group-hover:bg-white transition-colors">
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+										</svg>
+									</span>
+								</a>
+							</div>
+
+							<div class="px-6 sm:px-7 pb-6 sm:pb-7">
+								<div class="mt-5 rounded-[22px] overflow-hidden ring-1 ring-black/5 bg-black/[0.02]">
+									<AstroImage
+										src={projectImageMap[project.id as keyof typeof projectImageMap]}
+										alt={`${project.title} custom website project by Bluebird Web Development - ${project.tags?.join(', ') || 'web design'} showcase`}
+										width={1920}
+										height={1080}
+										class="w-full h-auto block transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+										loading={index < 2 ? 'eager' : 'lazy'}
+										fetchpriority={index < 2 ? 'high' : 'low'}
+									/>
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+
+				<!-- CTA block -->
+				<div class="mt-16 sm:mt-20 text-center">
+					<p class="text-sm text-textMuted mb-6">{cta.line}</p>
+					<a
+						href={cta.href}
+						class="group inline-flex items-center gap-3 px-8 py-4 bg-text text-bg font-medium rounded-full text-sm hover:scale-[1.02] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+					>
+						<span>{cta.buttonText}</span>
+						<svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
+
+<style>
+	.projects-dot-bg {
+		position: absolute;
+		inset: 0;
+		background-image: radial-gradient(circle, rgba(0, 0, 0, 0.10) 1px, transparent 1px);
+		background-size: 24px 24px;
+		opacity: 0.18;
+		pointer-events: none;
+		mask-image: radial-gradient(ellipse at 50% 10%, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 62%);
+	}
+</style>

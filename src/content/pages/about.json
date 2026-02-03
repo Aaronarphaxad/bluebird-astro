@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "title": "About – Who We Are | Bluebird",
+    "description": "We're a small web studio that builds conversion-focused websites and web apps. Clear process, direct communication, no agency bloat.",
+    "keywords": "about Bluebird, web development team, custom website developers, British Columbia web designers, lean web studio"
+  },
+  "headline": "About",
+  "intro": "We're a lean team. We build websites and web apps that load fast, look clear, and turn visitors into customers—without the agency overhead.",
+  "mission": {
+    "heading": "What we're here for",
+    "body": "We help businesses show up online in a way that's clear and easy to trust. Every page and interaction is there to guide people, not overwhelm them. The goal: a site that feels like it belongs to a brand that knows what it stands for.",
+    "imageAlt": "Bluebird team collaborating on web projects"
+  },
+  "story": {
+    "heading": "Why we do it",
+    "body": "We got tired of slow, overcomplicated projects and layers of account managers. We wanted to be the people who actually design and build—and to work with clients who want results, not endless meetings. So we kept the team small, the process straightforward, and the focus on what moves the needle: clarity, speed, and conversion."
+  },
+  "howWeWork": {
+    "heading": "How we work",
+    "subheading": "No fluff. No runaround.",
+    "points": [
+      {
+        "title": "Direct access",
+        "description": "You work with the people designing and building. No account manager in between."
+      },
+      {
+        "title": "Fixed scope, clear timeline",
+        "description": "We agree what's in scope and when it ships. No endless creep."
+      },
+      {
+        "title": "Support after launch",
+        "description": "We stay available for updates, tweaks, and small improvements."
+      }
+    ]
+  },
+  "team": {
+    "heading": "Who you'll work with",
+    "members": [
+      { "name": "Aaron", "role": "Lead developer & automation specialist", "initial": "A" },
+      { "name": "Ry", "role": "Designer & Developer", "initial": "R" },
+      { "name": "Daniel", "role": "Webflow/WordPress developer", "initial": "D" }
+    ]
+  },
+  "cta": {
+    "line": "Want to talk about a project?",
+    "buttonText": "Let's talk",
+    "href": "/contact"
+  }
+}

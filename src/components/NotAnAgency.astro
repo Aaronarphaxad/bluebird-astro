@@ -1,0 +1,57 @@
+---
+import notAnAgencyData from '../content/not-an-agency/index.json';
+
+const notAnAgency = notAnAgencyData;
+---
+
+<section class="relative py-16 sm:py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-bg overflow-hidden">
+	<div class="relative max-w-7xl mx-auto">
+		<h2 class="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-text leading-[1.1] mb-10 sm:mb-12 md:mb-16 max-w-5xl">
+			{notAnAgency?.headline ? (
+				notAnAgency.headline.split('\n').map((line: string, i: number) => (
+					<>
+						<span class={i === 0 ? 'relative inline-block' : ''}>
+							{line}
+							{i === 0 && <span class="absolute -bottom-2 left-0 right-0 h-3 bg-accentSubtle -rotate-1"></span>}
+						</span>
+						{i < notAnAgency.headline.split('\n').length - 1 && <br/>}
+					</>
+				))
+			) : (
+				<>
+					<span class="relative inline-block">
+						WE'RE NOT AN AGENCY.
+						<span class="absolute -bottom-2 left-0 right-0 h-3 bg-accentSubtle -rotate-1"></span>
+					</span>
+					<br/>WE'RE A LEAN STUDIO<br/>DOING GOOD WORK FOR GOOD PEOPLE.
+				</>
+			)}
+		</h2>
+		
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-10 sm:mb-12 md:mb-16">
+			{notAnAgency?.points?.map((point, index) => (
+				<div class="group relative pl-2 sm:pl-0">
+					{/* Number indicator */}
+					<div class="absolute -left-4 sm:-left-6 top-0 font-headline text-4xl sm:text-5xl md:text-6xl font-bold text-accentSubtle group-hover:text-accent/20 transition-colors">
+						{String(index + 1).padStart(2, '0')}
+					</div>
+					<h3 class="font-headline text-xl sm:text-2xl md:text-3xl font-bold text-text mb-3 sm:mb-4 relative z-10 pl-6 sm:pl-0">{point.title}</h3>
+					<p class="text-sm sm:text-base text-textMuted leading-relaxed relative z-10 pl-6 sm:pl-0">
+						{point.description}
+					</p>
+				</div>
+			))}
+		</div>
+		
+		<a 
+			href={notAnAgency?.ctaLink || "#services"} 
+			class="group inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 md:px-10 py-3 sm:py-4 bg-text text-bg font-semibold rounded-full text-xs sm:text-sm tracking-wide uppercase hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl w-full sm:w-auto"
+		>
+			<span>{notAnAgency?.ctaText || "Learn more about us"}</span>
+			<svg class="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+			</svg>
+		</a>
+	</div>
+</section>
+

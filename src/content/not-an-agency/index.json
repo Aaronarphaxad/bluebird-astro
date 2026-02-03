@@ -1,0 +1,20 @@
+{
+  "headline": "WHY BUSINESSES\nCHOOSE US OVER\nAGENCIES",
+  "ctaText": "See our work >",
+  "ctaLink": "#services",
+  "points": [
+    {
+      "title": "Direct access to your developer",
+      "description": "No account managers. Talk directly to who builds your site. Questions answered in hours, not days."
+    },
+    {
+      "title": "Save $5K–$15K vs. agencies",
+      "description": "Same quality, half the price. Agency-level results without the markup."
+    },
+    {
+      "title": "3–6 weeks, not months",
+      "description": "We focus on your project. Faster delivery means customers sooner."
+    }
+  ]
+}
+

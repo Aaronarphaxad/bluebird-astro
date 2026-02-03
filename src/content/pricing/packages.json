@@ -1,0 +1,93 @@
+{
+  "discount": {
+    "enabled": true,
+    "percentage": 30,
+    "label": "30% OFF"
+  },
+  "monthlyInstallments": 12,
+  "packages": [
+    {
+      "id": "essential",
+      "name": "Essential",
+      "badge": null,
+      "recommended": false,
+      "description": "For businesses who want an online presence fast",
+      "deliveryTime": "2 weeks delivery",
+      "basePrice": 1800,
+      "additionalPagePrice": 300,
+      "features": [
+        "Blazingly fast & beautiful site",
+        "Single landing page with sections",
+        "Basic form setup",
+        "Basic SEO optimization"
+      ],
+      "ctaText": "Get started",
+      "ctaLink": "#contact"
+    },
+    {
+      "id": "signature",
+      "name": "Signature",
+      "badge": "RECOMMENDED",
+      "recommended": true,
+      "description": "Advanced site with unique brand design",
+      "deliveryTime": "3-4 weeks delivery",
+      "basePrice": 3500,
+      "additionalPagePrice": 300,
+      "features": [
+        "Everything in Essential",
+        "Up to 8 pages",
+        "Custom animations",
+        "Advanced SEO",
+        "CMS setup",
+        "$300/additional page"
+      ],
+      "ctaText": "Get started",
+      "ctaLink": "#contact"
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "badge": "FULL PACKAGE",
+      "recommended": false,
+      "description": "Complete solution with cinematic design",
+      "deliveryTime": "4-6 weeks delivery",
+      "basePrice": 5700,
+      "additionalPagePrice": 300,
+      "features": [
+        "Everything in Signature",
+        "Up to 20 pages",
+        "Cinematic interactions",
+        "SEO + AI SEO",
+        "Figma design files",
+        "$300/additional page"
+      ],
+      "ctaText": "Get started",
+      "ctaLink": "#contact"
+    }
+  ],
+  "addons": [
+    {
+      "id": "crm",
+      "name": "CRM/SOP Workflow Setup",
+      "description": "Automation and workflow integration",
+      "price": 1200
+    },
+    {
+      "id": "copywriting",
+      "name": "Psychology-backed Copywriting",
+      "description": "Conversion-focused content",
+      "price": 500
+    },
+    {
+      "id": "retainer",
+      "name": "Hosting & Support Retainer",
+      "description": "Blog management and site monitoring",
+      "priceRange": {
+        "min": 150,
+        "max": 300
+      },
+      "billingCycle": "month"
+    }
+  ],
+  "customNote": "Need custom software? Let's discuss your requirements."
+}

@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import servicesPageContent from '../content/services-page.json';
+
+const {
+	pageIntro,
+	problemStatement,
+	sectionLabels,
+	services,
+	processTeaser,
+	whyChooseUs,
+	cta,
+} = servicesPageContent;
+
+const mainServices = services.filter((s: { group?: string }) => s.group === 'main').sort((a: { order: number }, b: { order: number }) => a.order - b.order);
+const otherServices = services.filter((s: { group?: string }) => s.group === 'other').sort((a: { order: number }, b: { order: number }) => a.order - b.order);
+const sortedBenefits = whyChooseUs.benefits.sort((a: { order: number }, b: { order: number }) => a.order - b.order);
+
+const getIcon = (iconName: string) => {
+	const icons: Record<string, string> = {
+		globe: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>`,
+		code: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>`,
+		palette: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>`,
+		settings: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+	};
+	return icons[iconName] || icons.globe;
+};
+---
+
+<Layout
+	title="Services – Websites, Web Apps & More | Bluebird"
+	description="Websites and custom web applications that convert. Fast delivery, clear process, ongoing support. Brand design and CRM & automation when you need them."
+	canonicalURL="/services"
+	ogImage="/og-services.jpg"
+	keywords="web development services, website design, custom software development, e-commerce solutions, UI/UX design, web applications, British Columbia"
+	structuredDataType="Service"
+>
+	<section class="relative pt-28 sm:pt-32 md:pt-36 pb-20 sm:pb-24 md:pb-32 px-4 sm:px-6 lg:px-8 bg-bg overflow-hidden">
+		<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/3 rounded-full blur-3xl animate-pulse-slow"></div>
+		<div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accentSubtle/30 rounded-full blur-3xl animate-pulse-slow-delay"></div>
+
+		<div class="relative max-w-7xl mx-auto">
+			<!-- Header -->
+			<header class="mb-12 sm:mb-16 md:mb-20">
+				<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end">
+					<div class="lg:col-span-7">
+						<h1 class="font-headline font-bold text-text leading-[0.9] tracking-[-0.04em] text-[clamp(4rem,12vw,7.5rem)]">
+							Services
+						</h1>
+					</div>
+					<div class="lg:col-span-5 lg:pb-3">
+						<p class="text-sm sm:text-base md:text-lg text-textMuted leading-relaxed max-w-prose">
+							{pageIntro}
+						</p>
+					</div>
+				</div>
+			</header>
+
+			<!-- Problem statement block -->
+			<div class="mb-16 sm:mb-20 rounded-2xl bg-white border border-accentSubtle/50 p-6 sm:p-8 md:p-10 max-w-3xl">
+				<h2 class="font-headline text-xl sm:text-2xl font-semibold text-text mb-4">
+					{problemStatement.heading}
+				</h2>
+				<ul class="space-y-3 mb-5" role="list">
+					{problemStatement.lines.map((line: string) => (
+						<li class="flex items-start gap-3">
+							<span class="flex-shrink-0 w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center mt-0.5" aria-hidden="true">
+								<svg class="w-3 h-3 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+								</svg>
+							</span>
+							<span class="text-sm sm:text-base text-textMuted">{line}</span>
+						</li>
+					))}
+				</ul>
+				<p class="font-headline font-medium text-text">{problemStatement.bridge}</p>
+			</div>
+
+			<!-- Main services -->
+			<div class="mb-12">
+				<h2 class="font-headline text-lg sm:text-xl font-semibold text-text mb-6">
+					{sectionLabels.main}
+				</h2>
+				<div class="rounded-xl overflow-hidden border border-accentSubtle/30 divide-y divide-accentSubtle/50">
+					{mainServices.map((service: { title: string; icon: string; description: string; whatsIncluded?: string[] }) => (
+						<details class="group bg-white shadow-sm hover:shadow-md hover:border-accent/20 transition-all duration-300">
+							<summary class="flex items-center justify-between gap-3 px-4 py-4 sm:py-5 cursor-pointer list-none" aria-label={`Toggle: ${service.title}`}>
+								<div class="flex items-center gap-4">
+									<div class="w-10 h-10 rounded-lg bg-accentSubtle flex items-center justify-center flex-shrink-0 text-accent" set:html={getIcon(service.icon)}></div>
+									<span class="text-base sm:text-lg font-semibold text-text group-hover:text-accent transition-colors">{service.title}</span>
+								</div>
+								<span class="w-6 h-6 rounded-full bg-accentSubtle/50 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/10 transition-colors">
+									<svg class="w-3 h-3 text-textMuted group-hover:text-accent transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+									</svg>
+								</span>
+							</summary>
+							<div class="px-4 pb-4 sm:pb-5 pt-0">
+								<div class="pl-14 space-y-4">
+									<p class="text-sm sm:text-base text-textMuted leading-relaxed">{service.description}</p>
+									{service.whatsIncluded && service.whatsIncluded.length > 0 && (
+										<div>
+											<h4 class="text-sm font-semibold text-text mb-3">What's included:</h4>
+											<ul class="space-y-2">
+												{service.whatsIncluded.map((item: string) => (
+													<li class="flex items-center gap-3">
+														<div class="w-5 h-5 rounded-full bg-accentSubtle flex items-center justify-center flex-shrink-0">
+															<svg class="w-3 h-3 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+														</div>
+														<span class="text-sm text-textMuted">{item}</span>
+													</li>
+												))}
+											</ul>
+										</div>
+									)}
+								</div>
+							</div>
+						</details>
+					))}
+				</div>
+			</div>
+
+			<!-- Other services -->
+			<div class="mb-16 sm:mb-20">
+				<h2 class="font-headline text-lg sm:text-xl font-semibold text-text mb-6">
+					{sectionLabels.other}
+				</h2>
+				<div class="rounded-xl overflow-hidden border border-accentSubtle/30 divide-y divide-accentSubtle/50">
+					{otherServices.map((service: { title: string; icon: string; description: string; whatsIncluded?: string[] }) => (
+						<details class="group bg-white shadow-sm hover:shadow-md hover:border-accent/20 transition-all duration-300">
+							<summary class="flex items-center justify-between gap-3 px-4 py-4 sm:py-5 cursor-pointer list-none" aria-label={`Toggle: ${service.title}`}>
+								<div class="flex items-center gap-4">
+									<div class="w-10 h-10 rounded-lg bg-accentSubtle flex items-center justify-center flex-shrink-0 text-accent" set:html={getIcon(service.icon)}></div>
+									<span class="text-base sm:text-lg font-semibold text-text group-hover:text-accent transition-colors">{service.title}</span>
+								</div>
+								<span class="w-6 h-6 rounded-full bg-accentSubtle/50 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/10 transition-colors">
+									<svg class="w-3 h-3 text-textMuted group-hover:text-accent transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+									</svg>
+								</span>
+							</summary>
+							<div class="px-4 pb-4 sm:pb-5 pt-0">
+								<div class="pl-14 space-y-4">
+									<p class="text-sm sm:text-base text-textMuted leading-relaxed">{service.description}</p>
+									{service.whatsIncluded && service.whatsIncluded.length > 0 && (
+										<div>
+											<h4 class="text-sm font-semibold text-text mb-3">What's included:</h4>
+											<ul class="space-y-2">
+												{service.whatsIncluded.map((item: string) => (
+													<li class="flex items-center gap-3">
+														<div class="w-5 h-5 rounded-full bg-accentSubtle flex items-center justify-center flex-shrink-0">
+															<svg class="w-3 h-3 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+														</div>
+														<span class="text-sm text-textMuted">{item}</span>
+													</li>
+												))}
+											</ul>
+										</div>
+									)}
+								</div>
+							</div>
+						</details>
+					))}
+				</div>
+			</div>
+
+			<!-- Process teaser -->
+			<div class="mb-16 sm:mb-20 rounded-2xl bg-accent/5 border border-accent/10 p-6 sm:p-8 md:p-10">
+				<h2 class="font-headline text-xl sm:text-2xl font-semibold text-text mb-3">
+					{processTeaser.heading}
+				</h2>
+				<p class="text-sm sm:text-base text-textMuted leading-relaxed mb-4 max-w-2xl">
+					{processTeaser.body}
+				</p>
+				<a href={processTeaser.linkHref} class="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded">
+					{processTeaser.linkText}
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+				</a>
+			</div>
+
+			<!-- Why work with us -->
+			<div class="mb-16 sm:mb-20">
+				<h2 class="font-headline text-2xl sm:text-3xl md:text-4xl font-semibold text-text mb-10 sm:mb-12">
+					{whyChooseUs.title}
+				</h2>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+					{sortedBenefits.map((benefit: { title: string; description: string; icon: string }) => (
+						<div class="bg-white rounded-2xl border border-accentSubtle/50 p-6 sm:p-8">
+							<div class="w-10 h-10 rounded-xl bg-accentSubtle flex items-center justify-center mb-4">
+								<span class="text-xl">{benefit.icon}</span>
+							</div>
+							<h3 class="font-headline text-lg font-semibold text-text mb-2">{benefit.title}</h3>
+							<p class="text-sm text-textMuted leading-relaxed">{benefit.description}</p>
+						</div>
+					))}
+				</div>
+			</div>
+
+			<!-- CTA -->
+			<div class="text-center">
+				<p class="text-sm text-textMuted mb-6">{cta.line}</p>
+				<a
+					href={cta.href}
+					class="group inline-flex items-center gap-3 px-8 py-4 bg-text text-bg font-medium rounded-full text-sm hover:scale-[1.02] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+				>
+					<span>{cta.buttonText}</span>
+					<svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
+
+<style>
+	details summary::-webkit-details-marker {
+		display: none;
+	}
+	@keyframes pulseSlow {
+		0%, 100% { opacity: 0.3; transform: scale(1); }
+		50% { opacity: 0.5; transform: scale(1.1); }
+	}
+	.animate-pulse-slow {
+		animation: pulseSlow 8s ease-in-out infinite;
+	}
+	.animate-pulse-slow-delay {
+		animation: pulseSlow 8s ease-in-out infinite;
+		animation-delay: 2s;
+	}
+</style>

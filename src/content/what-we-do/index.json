@@ -1,0 +1,20 @@
+{
+  "description1": "Sites that bring in customers, not just look pretty. Pages load in under 2 seconds and rank higher on Google.",
+  "description2": "We handle everything: strategy, design, development, launch. One team, one price.",
+  "ctaText": "See our process >",
+  "techStack": [
+    {
+      "name": "Next.js"
+    },
+    {
+      "name": "WordPress"
+    },
+    {
+      "name": "Sanity CMS"
+    },
+    {
+      "name": "Webflow"
+    }
+  ]
+}
+
