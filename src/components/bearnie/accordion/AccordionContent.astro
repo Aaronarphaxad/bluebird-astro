@@ -1,0 +1,41 @@
+---
+import { cn } from "@/utils/cn";
+import type { HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"div"> {
+  defaultOpen?: boolean;
+  id?: string;
+}
+
+const { defaultOpen = false, class: className, id, ...props } = Astro.props;
+
+const classes = cn(
+  "grid text-sm transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+  defaultOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+  className
+);
+---
+
+<div
+  class={classes}
+  data-accordion-content
+  data-state={defaultOpen ? "open" : "closed"}
+  role="region"
+  id={id}
+  {...props}
+>
+  <div class="min-h-0 overflow-hidden">
+    <div class="pb-4 pt-0">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  [data-accordion-content] {
+    grid-template-rows: 0fr;
+  }
+  [data-accordion-content][data-state="open"] {
+    grid-template-rows: 1fr;
+  }
+</style>

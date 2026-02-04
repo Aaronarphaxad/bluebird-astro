@@ -11,27 +11,27 @@
 		"title": "Custom web applications",
 		"description": "Scalable web apps with custom functionality, APIs, and architecture that grow with your business.",
 		"tags": ["Custom functionality", "APIs", "Auth", "Scalable architecture", "Support"],
-		"image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80"
+		"image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80"
 	},
 	{
 		"id": "brand-design",
 		"title": "Brand Design",
 		"description": "Comprehensive brand strategy and visual identity that communicates your unique value.",
 		"tags": ["Logo design", "Brand guidelines", "Typography", "Visual identity"],
-		"image": "https://images.unsplash.com/photo-1561070791-2526d31cf5e7?w=400&q=80"
+		"image": "https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=400&q=80"
 	},
 	{
 		"id": "crm-automation",
 		"title": "CRM & Automation",
 		"description": "CRM setup and workflow automation that streamlines operations and integrates with your tools.",
 		"tags": ["CRM setup", "Workflow automation", "Integrations", "Training"],
-		"image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80"
+		"image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80"
 	},
 	{
 		"id": "website-redesign",
 		"title": "Website redesign",
 		"description": "Convert, upgrade, or migrate your existing site to a faster, conversion-focused experience.",
 		"tags": ["Convert", "Upgrade", "Migrate"],
-		"image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80"
+		"image": "https://images.unsplash.com/photo-1467232002470-1aacc7743d2f?w=400&q=80"
 	}
 ]
