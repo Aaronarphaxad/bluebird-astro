@@ -85,7 +85,7 @@ export default {
     			'section-tiny': ['14px', { lineHeight: '20px' }],
     			'section-header': ['36px', { lineHeight: '40px' }],
     			'section-subheading': ['18px', { lineHeight: '24px' }],
-    			'section-inner-title': ['24px', { lineHeight: '32px' }],
+    			'section-inner-title': ['24px', { lineHeight: '28px' }],
     			'section-body': ['16px', { lineHeight: '24px' }]
     		},
     		borderRadius: {

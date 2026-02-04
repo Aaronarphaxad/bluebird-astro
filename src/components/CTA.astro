@@ -6,6 +6,9 @@ interface Props {
 }
 
 const { id = 'contact' } = Astro.props;
+
+const formId = import.meta.env.PUBLIC_FORMSPARK_FORM_ID ?? '';
+const formActionUrl = formId ? `https://submit-form.com/${formId}` : '';
 ---
 
 <section
@@ -67,11 +70,11 @@ const { id = 'contact' } = Astro.props;
 						<ul class="space-y-1.5 text-sm sm:text-base">
 							<li>
 								<a
-									href="#"
+									href="https://x.com/bluebird_web"
 									class="inline-flex items-center gap-2 text-text hover:text-accent transition-colors"
 								>
 									<span aria-hidden="true" class="text-xs">↗</span>
-									Facebook
+									X
 								</a>
 							</li>
 							<li>
@@ -101,14 +104,16 @@ const { id = 'contact' } = Astro.props;
 			<div class="lg:col-span-6">
 				<div class="bg-white/80 backdrop-blur-md border border-black/5 shadow-[0_18px_45px_rgba(15,23,42,0.10)] rounded-[32px] p-5 sm:p-7 md:p-8">
 					<form
+						id="contact-form"
 						class="space-y-5"
 						method="POST"
+						action={formActionUrl}
 						aria-label="Project inquiry form"
+						data-formspark-url={formActionUrl}
 					>
 						<!-- basic anti-spam: honeypot + min submit time -->
 						<input type="text" name="company_website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
 						<input type="hidden" name="form_started_at" id="form-started-at" value="" />
-
 						<!-- Name (one row) -->
 						<div class="space-y-1.5">
 							<label for="contact-name" class="text-xs font-medium text-textMuted">Name</label>
@@ -151,39 +156,29 @@ const { id = 'contact' } = Astro.props;
 							</div>
 						</div>
 
-						<!-- Service checkboxes (one row) -->
+						<!-- Service checkboxes (simple list) -->
 						<div class="space-y-1.5">
 							<fieldset class="space-y-2" aria-describedby="contact-service-hint">
 								<legend class="text-xs font-medium text-textMuted">* Service required</legend>
-
-								<div class="flex flex-wrap justify-center gap-2">
-									<label class="service-tab-button relative px-3 sm:px-4 py-2 text-xs font-medium rounded-full transition-all duration-300 text-textMuted bg-accentSubtle/50 hover:bg-accentSubtle cursor-pointer">
-										<input
-											type="checkbox"
-											name="service[]"
-											value="website"
-											class="absolute opacity-0 w-0 h-0 pointer-events-none"
-											required
-										/>
+								<div class="flex flex-wrap gap-x-6 gap-y-1">
+									<label class="inline-flex items-center gap-2 text-sm text-text cursor-pointer">
+										<input type="checkbox" name="service[]" value="website" class="accent-accent rounded border-[#E1E4EA]" />
 										<span>Website</span>
 									</label>
-									<label class="service-tab-button relative px-3 sm:px-4 py-2 text-xs font-medium rounded-full transition-all duration-300 text-textMuted bg-accentSubtle/50 hover:bg-accentSubtle cursor-pointer">
-										<input type="checkbox" name="service[]" value="custom-software" class="absolute opacity-0 w-0 h-0 pointer-events-none" />
+									<label class="inline-flex items-center gap-2 text-sm text-text cursor-pointer">
+										<input type="checkbox" name="service[]" value="custom-software" class="accent-accent rounded border-[#E1E4EA]" />
 										<span>Custom software</span>
 									</label>
-									<label class="service-tab-button relative px-3 sm:px-4 py-2 text-xs font-medium rounded-full transition-all duration-300 text-textMuted bg-accentSubtle/50 hover:bg-accentSubtle cursor-pointer">
-										<input type="checkbox" name="service[]" value="brand-design" class="absolute opacity-0 w-0 h-0 pointer-events-none" />
+									<label class="inline-flex items-center gap-2 text-sm text-text cursor-pointer">
+										<input type="checkbox" name="service[]" value="brand-design" class="accent-accent rounded border-[#E1E4EA]" />
 										<span>Brand design</span>
 									</label>
-									<label class="service-tab-button relative px-3 sm:px-4 py-2 text-xs font-medium rounded-full transition-all duration-300 text-textMuted bg-accentSubtle/50 hover:bg-accentSubtle cursor-pointer">
-										<input type="checkbox" name="service[]" value="improved-operations" class="absolute opacity-0 w-0 h-0 pointer-events-none" />
+									<label class="inline-flex items-center gap-2 text-sm text-text cursor-pointer">
+										<input type="checkbox" name="service[]" value="improved-operations" class="accent-accent rounded border-[#E1E4EA]" />
 										<span>Automation</span>
 									</label>
 								</div>
-
-								<p id="contact-service-hint" class="text-xs text-textMuted">
-									Select one or more.
-								</p>
+								<p id="contact-service-hint" class="text-xs text-textMuted">Select one or more.</p>
 							</fieldset>
 						</div>
 
@@ -222,7 +217,13 @@ const { id = 'contact' } = Astro.props;
 							</p>
 						</div>
 
-						<div class="pt-2 flex flex-col items-center">
+						<div class="pt-2 flex flex-col items-center gap-3">
+							<div id="form-success-message" class="hidden w-full max-w-md rounded-2xl bg-accentSubtle/60 border border-accent/20 px-4 py-3 text-sm text-text text-center" role="alert">
+								Thanks for your message. We’ll be in touch soon.
+							</div>
+							<div id="form-error-message" class="hidden w-full max-w-md rounded-2xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-800 text-center" role="alert">
+								Something went wrong sending your message. Please try again or email us at <a href="mailto:hello@bluebirdweb.ca" class="underline font-medium">hello@bluebirdweb.ca</a>.
+							</div>
 							<button
 								type="submit"
 								id="contact-submit"
@@ -254,9 +255,11 @@ const { id = 'contact' } = Astro.props;
 
 				<script is:inline>
 					(() => {
-						const form = document.querySelector('form[aria-label="Project inquiry form"]');
+						const form = document.getElementById('contact-form');
 						if (!form) return;
 
+						const successEl = document.getElementById('form-success-message');
+						const errorEl = document.getElementById('form-error-message');
 						const startedAt = form.querySelector('#form-started-at');
 						const consent = form.querySelector('#privacy-consent');
 						const submitBtn = form.querySelector('#contact-submit');
@@ -268,73 +271,67 @@ const { id = 'contact' } = Astro.props;
 						const now = Date.now();
 						if (startedAt) startedAt.value = String(now);
 
-						const hasSelectedService = () => {
-							return serviceCheckboxes.some((c) => c.checked);
-						};
-
+						const formActionUrl = form.dataset.formsparkUrl;
+						const hasSelectedService = () => serviceCheckboxes.some((c) => c.checked);
 						const syncServiceRequired = () => {
-							// Native "required" doesn't work as a group, so toggle required on the first checkbox.
-							if (serviceCheckboxes.length === 0) return;
-							serviceCheckboxes[0].required = !hasSelectedService();
+							if (serviceCheckboxes.length) serviceCheckboxes[0].required = !hasSelectedService();
 						};
-
 						const hasRequiredText = () => {
-							const nameOk = !!(nameInput && nameInput.value.trim().length > 0);
-							const emailOk = !!(emailInput && emailInput.value.trim().length > 0);
-							return nameOk && emailOk;
+							return !!(nameInput?.value?.trim()) && !!(emailInput?.value?.trim());
 						};
-
-						const updateServiceTabStyles = () => {
-							serviceCheckboxes.forEach((checkbox) => {
-								const label = checkbox.closest('label.service-tab-button');
-								if (!label) return;
-								
-								if (checkbox.checked) {
-									label.classList.add('active', 'bg-text', 'text-bg');
-									label.classList.remove('text-textMuted', 'bg-accentSubtle/50');
-								} else {
-									label.classList.remove('active', 'bg-text', 'text-bg');
-									label.classList.add('text-textMuted', 'bg-accentSubtle/50');
-								}
-							});
-						};
-
 						const sync = () => {
 							if (!submitBtn || !consent) return;
 							syncServiceRequired();
-							updateServiceTabStyles();
 							submitBtn.disabled = !(consent.checked && hasRequiredText() && hasSelectedService());
 						};
+
 						sync();
 						consent?.addEventListener('change', sync);
 						nameInput?.addEventListener('input', sync);
 						emailInput?.addEventListener('input', sync);
-						serviceCheckboxes.forEach((c) => {
-							c.addEventListener('change', sync);
-						});
+						serviceCheckboxes.forEach((c) => c.addEventListener('change', sync));
 
-						form.addEventListener('submit', (e) => {
+						form.addEventListener('submit', async (e) => {
+							e.preventDefault();
+							if (successEl) successEl.classList.add('hidden');
+							if (errorEl) errorEl.classList.add('hidden');
 							try {
-								// Honeypot filled -> likely bot
-								if (honeypot && honeypot.value && honeypot.value.trim().length > 0) {
-									e.preventDefault();
-									return;
-								}
-
-								// Guard: don't submit until required fields are actually ready
-								if (!(consent?.checked && hasRequiredText() && hasSelectedService())) {
-									e.preventDefault();
-									return;
-								}
-
-								// Too fast -> likely bot (3s)
+								if (honeypot?.value?.trim()) return;
+								if (!(consent?.checked && hasRequiredText() && hasSelectedService())) return;
 								const started = startedAt?.value ? Number(startedAt.value) : now;
-								if (!Number.isNaN(started) && Date.now() - started < 3000) {
-									e.preventDefault();
-									return;
+								if (!Number.isNaN(started) && Date.now() - started < 3000) return;
+								if (!formActionUrl) return;
+
+								submitBtn.disabled = true;
+								// Formspark AJAX: JSON body + Accept/Content-Type application/json so they return 200 (no redirect/CORS)
+								const service = serviceCheckboxes.filter((c) => c.checked).map((c) => c.value);
+								const payload = {
+									name: nameInput?.value?.trim() ?? '',
+									email: emailInput?.value?.trim() ?? '',
+									phone: form.querySelector('input[name="phone"]')?.value?.trim() ?? '',
+									service: service.length ? service : undefined,
+									message: form.querySelector('[name="message"]')?.value?.trim() ?? '',
+								};
+								const res = await fetch(formActionUrl, {
+									method: 'POST',
+									headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+									body: JSON.stringify(payload),
+								});
+								if (!res.ok) throw new Error('Submit failed');
+								if (successEl) {
+									successEl.classList.remove('hidden');
+									successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 								}
+								form.reset();
+								if (startedAt) startedAt.value = String(Date.now());
+								sync();
 							} catch {
-								// If anything goes wrong, don't block legitimate users
+								if (errorEl) {
+									errorEl.classList.remove('hidden');
+									errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+								}
+								submitBtn.disabled = false;
+								sync();
 							}
 						});
 					})();

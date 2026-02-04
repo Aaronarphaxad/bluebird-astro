@@ -41,7 +41,7 @@ const stepIcons = [
 		<div class="flex flex-col gap-2 lg:flex-row lg:gap-5 lg:items-stretch lg:justify-center max-w-4xl mx-auto">
 			{sortedSteps.map((step, index) => (
 				<>
-					<div class="group relative flex flex-col lg:flex-1 lg:max-w-[240px]">
+					<div class="group relative flex flex-col lg:flex-1 lg:max-w-[260px]">
 						{/* Single line between cards on mobile */}
 						{index > 0 && (
 							<div aria-hidden="true" class="lg:hidden h-px w-full bg-accentSubtle/80 flex-shrink-0 mb-2" />
@@ -51,7 +51,7 @@ const stepIcons = [
 						{/* Background step number */}
 						<span
 							aria-hidden="true"
-							class="absolute top-3 left-3 lg:top-4 lg:left-4 font-body text-5xl sm:text-6xl lg:text-5xl font-normal text-accentSubtle/70 select-none pointer-events-none leading-none"
+							class="absolute top-3 left-3 lg:top-4 lg:left-4 font-body text-5xl sm:text-6xl lg:text-5xl font-normal text-accentSubtle/80 select-none pointer-events-none leading-none"
 						>
 							{String(index + 1).padStart(2, '0')}
 						</span>
@@ -60,12 +60,12 @@ const stepIcons = [
 						<div class="relative z-10 w-9 h-9 flex items-center justify-center rounded-xl bg-accentSubtle/40 text-accent mb-3 [&_svg]:shrink-0 [&_svg]:w-5 [&_svg]:h-5" set:html={stepIcons[index]} />
 
 						{/* Title */}
-						<h3 class="font-body text-sm font-medium text-text tracking-tight mb-1.5 group-hover:text-accent transition-colors relative z-10">
+						<h3 class="font-body text-md font-medium text-text tracking-tight mb-1.5 group-hover:text-accent transition-colors relative z-10">
 							{step.entry.title}
 						</h3>
 
 						{/* Description */}
-						<p class="font-body text-xs font-medium text-textMuted leading-relaxed relative z-10 flex-1">
+						<p class="font-body text-sm font-medium text-textMuted leading-relaxed relative z-10 flex-1">
 							{step.entry.description}
 						</p>
 						</div>
