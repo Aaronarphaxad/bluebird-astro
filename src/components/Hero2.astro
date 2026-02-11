@@ -2,12 +2,13 @@
 // Hero2 - Modern hero section matching the new design
 import TrustedBy from './TrustedBy.astro';
 import CTA from './ui/CTA.astro';
+import heroBackground from '@/assets/images/hero/hero-background.avif';
 ---
 
 <section class="hero2-section">
   <!-- Backdrop: hero image + gradient overlay + light shape -->
   <div class="hero2-backdrop" aria-hidden="true">
-    <div class="hero2-backdrop-image" data-hero2-parallax></div>
+    <div class="hero2-backdrop-image" data-hero2-parallax style={`background-image: url(${typeof heroBackground === 'string' ? heroBackground : heroBackground.src})`}></div>
     <div class="hero2-backdrop-gradient"></div>
     <div class="hero2-backdrop-shape">
       <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -100,18 +101,18 @@ import CTA from './ui/CTA.astro';
     z-index: 0;
   }
 
-  /* Pure CSS parallax: fixed background moves slower as you scroll away */
+  /* Pure CSS parallax: fixed background (image URL set inline from import for correct build path) */
   .hero2-backdrop-image {
     position: absolute;
     inset: 0;
-    background-image: url('/src/assets/images/hero/hero-background.avif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
 
-  @media (prefers-reduced-motion: reduce), (max-width: 768px) {
+  /* Disable fixed on tablet/iPad and mobile: iOS Safari doesn't support fixed backgrounds reliably */
+  @media (prefers-reduced-motion: reduce), (max-width: 1024px) {
     .hero2-backdrop-image {
       background-attachment: scroll;
     }
@@ -135,7 +136,7 @@ import CTA from './ui/CTA.astro';
     background-attachment: fixed;
   }
 
-  @media (prefers-reduced-motion: reduce), (max-width: 768px) {
+  @media (prefers-reduced-motion: reduce), (max-width: 1024px) {
     .hero2-backdrop-gradient {
       background-attachment: scroll;
     }

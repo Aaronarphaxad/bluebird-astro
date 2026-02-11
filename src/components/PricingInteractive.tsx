@@ -209,7 +209,7 @@ const PricingInteractive: React.FC = () => {
 						return (
 							<div
 								key={pkg.id}
-								className={`relative rounded-lg flex flex-col w-full md:flex-1 md:min-w-0 md:max-w-[320px] lg:max-w-[340px] ${
+								className={`relative rounded-lg flex flex-col w-full md:flex-1 md:min-w-0 md:max-w-[320px] lg:max-w-[340px] overflow-hidden ${
 									isRecommended
 										? 'bg-[#1a1a1a] text-white p-4 md:p-5 border border-gray-700 shadow-lg'
 										: 'bg-white text-text p-4 md:p-5 border border-accentSubtle/30 shadow-md hover:shadow-lg transition-all duration-300'
@@ -268,10 +268,10 @@ const PricingInteractive: React.FC = () => {
 									isRecommended ? 'border-gray-700' : 'border-gray-100'
 								}`}></div>
 
-								{/* Price and CTA */}
-								<div className="flex items-center justify-between gap-3 mt-auto">
-									<div>
-										<div className="flex items-baseline gap-1">
+								
+								<div className="flex flex-wrap items-center justify-between gap-3 mt-auto min-w-0">
+									<div className="min-w-0">
+										<div className="flex items-baseline gap-1 flex-wrap">
 											{discount.enabled && (
 												<span className={`text-[10px] line-through ${
 													isRecommended ? 'text-gray-500' : 'text-gray-400'
@@ -288,7 +288,7 @@ const PricingInteractive: React.FC = () => {
 												<span className={`text-[10px] ${
 													isRecommended ? 'text-gray-500' : 'text-gray-400'
 												}`}>
-													/mo
+													{'/mo'}
 												</span>
 											)}
 										</div>
@@ -304,7 +304,7 @@ const PricingInteractive: React.FC = () => {
 										variant={isRecommended ? 'primary' : 'dark'}
 										size="xs"
 										showArrow={true}
-										className="gap-1.5"
+										className="gap-1.5 flex-shrink-0"
 									>
 										{pkg.ctaText}
 									</CTA>
@@ -404,7 +404,7 @@ const PricingInteractive: React.FC = () => {
 														</span>
 														{addon.billingCycle && (
 															<span className="text-[10px] text-gray-400 ml-1">
-																/{addon.billingCycle}
+																{'/'}{addon.billingCycle}
 															</span>
 														)}
 													</div>
