@@ -38,7 +38,7 @@
     "members": [
       { "name": "Aaron", "role": "Lead developer & automation specialist", "initial": "A" },
       { "name": "Ry", "role": "Designer & Developer", "initial": "R" },
-      { "name": "Daniel", "role": "Webflow/WordPress developer", "initial": "D" }
+      { "name": "Daniel", "role": "Web developer", "initial": "D" }
     ]
   },
   "cta": {

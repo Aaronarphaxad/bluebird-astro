@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/ui/CTA.astro';
+import { pricingConfig } from '../components/PricingInteractive';
+
+const { packages, addons, monthlyInstallments, customNote } = pricingConfig;
+---
+
+<Layout
+	title="Pricing – Websites, Care Plan & Add-ons | Bluebird"
+	description="Transparent pricing for websites (Essential, Tailored, Custom), Care Plan, Local SEO, branding, and automation. All packages can be paid monthly."
+	canonicalURL="/pricing"
+	keywords="website pricing, web studio pricing, Local SEO pricing, Bluebird"
+>
+	<section class="relative pt-28 sm:pt-32 md:pt-36 pb-20 sm:pb-24 md:pb-32 px-4 sm:px-6 lg:px-8 bg-bg overflow-hidden">
+		<div class="relative max-w-5xl mx-auto">
+			<header class="text-center mb-12 sm:mb-16">
+				<h1 class="font-headline text-3xl sm:text-4xl md:text-5xl font-bold text-text mb-4">
+					Pricing
+				</h1>
+				<p class="font-body text-base text-textMuted max-w-xl mx-auto">
+					Simple, productized pricing. Website packages can be paid in full or in {monthlyInstallments} monthly installments. Add-ons available after launch.
+				</p>
+			</header>
+
+			<!-- Website packages -->
+			<h2 class="font-headline text-xl sm:text-2xl font-semibold text-text mb-6">Website packages</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+				{packages.map((pkg) => (
+					<div
+						class:list={[
+							'rounded-xl border p-6 flex flex-col',
+							pkg.recommended ? 'bg-[#1a1a1a] border-gray-700 text-white' : 'bg-white border-accentSubtle/30'
+						]}
+					>
+						{pkg.badge && (
+							<span class={`inline-flex self-start px-2 py-0.5 rounded text-[10px] font-medium mb-3 ${pkg.recommended ? 'border border-gray-600 text-gray-300' : 'bg-gray-100 text-gray-600'}`}>
+								{pkg.badge}
+							</span>
+						)}
+						<h3 class="font-headline text-lg font-semibold mb-1">{pkg.name}</h3>
+						<p class={`text-sm mb-4 ${pkg.recommended ? 'text-gray-400' : 'text-textMuted'}`}>{pkg.description}</p>
+						<div class="border-t border-accentSubtle/30 pt-4 mb-4 flex-1">
+							<ul class="space-y-2">
+								{pkg.features.map((f) => (
+									<li class="flex items-start gap-2 text-sm">
+										<svg class="w-4 h-4 flex-shrink-0 mt-0.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+										<span class={pkg.recommended ? 'text-gray-300' : 'text-textMuted'}>{f}</span>
+									</li>
+								))}
+							</ul>
+						</div>
+						<div class="border-t border-accentSubtle/30 pt-4">
+							<p class={`text-2xl font-semibold ${pkg.recommended ? 'text-white' : 'text-text'}`}>
+								${pkg.basePrice.toLocaleString()}
+							</p>
+							<p class="text-xs text-textMuted mt-1">or ${Math.ceil(pkg.basePrice / monthlyInstallments).toLocaleString()}/mo for {monthlyInstallments} months</p>
+							<p class="text-xs text-textMuted mt-1">{pkg.deliveryTime}</p>
+							<CTA href={pkg.ctaLink} variant={pkg.recommended ? 'primary' : 'dark'} size="sm" class="mt-4">
+								{pkg.ctaText}
+							</CTA>
+						</div>
+					</div>
+				))}
+			</div>
+
+			<!-- Add-ons -->
+			<h2 class="font-headline text-xl sm:text-2xl font-semibold text-text mb-2">Add-ons</h2>
+			<p class="font-body text-sm text-textMuted mb-6">
+				We build your website, then help local customers find it. Add Local SEO or other services when you're ready.
+			</p>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+				{addons.map((addon) => (
+					<div class="bg-white rounded-xl border border-accentSubtle/30 p-5 shadow-sm">
+						<h3 class="font-headline text-base font-semibold text-text mb-1">{addon.name}</h3>
+						<p class="text-sm text-textMuted mb-4">{addon.description}</p>
+						<div class="border-t border-gray-100 pt-3">
+							{addon.price != null ? (
+								<span class="text-lg font-semibold text-text">
+									${addon.price.toLocaleString()}
+									{addon.billingCycle ? <span class="text-xs text-textMuted font-normal">/{addon.billingCycle}</span> : null}
+								</span>
+							) : addon.priceRange ? (
+								<span class="text-lg font-semibold text-text">
+									${addon.priceRange.min}-${addon.priceRange.max}
+									{addon.billingCycle ? <span class="text-xs text-textMuted font-normal">/{addon.billingCycle}</span> : null}
+								</span>
+							) : addon.customPrice ? (
+								<span class="text-lg font-semibold text-text">{addon.customPrice}</span>
+							) : null}
+						</div>
+					</div>
+				))}
+			</div>
+
+			{customNote && (
+				<p class="font-body text-sm text-textMuted mb-10 text-center">{customNote}</p>
+			)}
+
+			<div class="text-center">
+				<CTA href="/contact" variant="primary" size="md" showArrow={true}>
+					Get in touch
+				</CTA>
+			</div>
+		</div>
+	</section>
+	<Footer />
+</Layout>

@@ -1,111 +1,115 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CTA from './ui/CTA';
 
 // ============================================
-// PRICING DATA - Easy to update/transfer to CMS
+// PRICING DATA - Canonical source; sync with src/content/pricing/packages.json if needed
 // ============================================
 export const pricingConfig = {
-	// Global discount settings
-	discount: {
-		enabled: true,
-		percentage: 20,
-		label: "20% OFF"
-	},
+	discount: { enabled: false, percentage: 0, label: "" },
 
-	// Payment terms
 	monthlyInstallments: 12,
 
-	// Packages
 	packages: [
 		{
 			id: "essential",
 			name: "Essential",
 			badge: null,
 			recommended: false,
-			description: "Online presence, fast",
+			description: "For businesses who want an online presence fast",
 			deliveryTime: "2 weeks",
-			basePrice: 2100,
+			basePrice: 1700,
 			features: [
-				"Beautiful landing page",
-				"Up to 4 pages",
-				"Form setup",
-				"Basic SEO",
-				"Mobile responsive"
+				"Blazingly fast & beautiful site",
+				"Single landing page with sections",
+				"Basic form setup",
+				"Basic SEO optimization"
 			],
 			ctaText: "Get started",
 			ctaLink: "/contact"
 		},
 		{
-			id: "signature",
-			name: "Signature",
-			badge: "MOST POPULAR",
+			id: "tailored",
+			name: "Tailored",
+			badge: "RECOMMENDED",
 			recommended: true,
-			description: "Advanced site with unique brand",
+			description: "Advanced site with unique brand design",
 			deliveryTime: "3-4 weeks",
-			basePrice: 3700,
+			basePrice: 3500,
 			features: [
 				"Everything in Essential",
-				"Up to 10 pages",
+				"Up to 8 pages",
 				"Custom animations",
 				"Advanced SEO",
 				"CMS setup",
-				"$300/extra page"
+				"$300/additional page"
 			],
 			ctaText: "Get started",
 			ctaLink: "/contact"
 		},
 		{
-			id: "enterprise",
-			name: "Enterprise",
-			badge: null,
+			id: "custom",
+			name: "Custom",
+			badge: "FULL PACKAGE",
 			recommended: false,
-			description: "Complete cinematic solution",
+			description: "Complete solution with cinematic design",
 			deliveryTime: "4-6 weeks",
-			basePrice: 5900,
+			basePrice: 7000,
 			features: [
-				"Everything in Signature",
+				"Everything in Tailored",
 				"Up to 20 pages",
 				"Cinematic interactions",
 				"SEO + AI SEO",
 				"Figma design files",
-				"$300/extra page"
+				"$300/additional page"
 			],
 			ctaText: "Get started",
 			ctaLink: "/contact"
 		}
 	],
 
-	// Add-ons (for full pricing page)
 	addons: [
 		{
-			id: "crm",
-			name: "CRM/Automation",
-			description: "Help businesses improve their operations using tools like Notion, Zapier, etc.",
-			price: 1000
+			id: "care-plan",
+			name: "Care Plan",
+			description: "Hosting, infrastructure, monitoring, minor technical maintenance, and reports.",
+			price: 300,
+			billingCycle: "year"
 		},
 		{
-			id: "copywriting",
-			name: "Copywriting for websites",
-			description: "Professional copywriting services for your website",
-			price: 400
+			id: "edit-packs",
+			name: "Edit Packs",
+			description: "Support-ticket style content updates and small changes. Sold in packs.",
+			customPrice: "From $X"
 		},
 		{
-			id: "custom-software",
-			name: "Custom software",
-			description: "Using tools like NextJS, React Native, Python, PHP, I can build clients custom solutions for their business needs",
-			price: null,
-			customPrice: "Custom quote"
-		},
-		{
-			id: "retainer",
-			name: "Retainer/Maintenance",
-			description: "Hosting, occasional content updates, performance monitoring, general support, automation updates/help",
-			priceRange: { min: 150, max: 300 },
+			id: "local-seo-growth",
+			name: "Local SEO Growth",
+			description: "Get found on Google. Google Business Profile setup, local keywords, monthly reports, done-for-you management. Add after launch.",
+			price: 499,
 			billingCycle: "month"
+		},
+		{
+			id: "local-seo-authority",
+			name: "Local SEO Authority",
+			description: "Everything in Growth plus deeper local strategy and more visibility. Monthly reports included.",
+			price: 699,
+			billingCycle: "month"
+		},
+		{
+			id: "branding",
+			name: "Branding (logo + identity)",
+			description: "Logo design and visual identity so your brand stands out.",
+			price: 700
+		},
+		{
+			id: "automation",
+			name: "Automation",
+			description: "Workflow automation and integrations. Advanced setups priced by scope.",
+			customPrice: "From $399"
 		}
 	],
 
-	customNote: "Need custom software? Let's discuss your requirements."
+	customNote: "Need custom software or a complex web app? Let's discuss your requirements."
 };
 
 // ============================================
@@ -113,27 +117,7 @@ export const pricingConfig = {
 // ============================================
 const PricingInteractive: React.FC = () => {
 	const [isMonthly, setIsMonthly] = useState(false);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const { discount, packages, monthlyInstallments, addons } = pricingConfig;
-
-	// Handle Escape key to close modal
-	useEffect(() => {
-		const handleEscape = (e: KeyboardEvent) => {
-			if (e.key === 'Escape' && isModalOpen) {
-				setIsModalOpen(false);
-			}
-		};
-
-		if (isModalOpen) {
-			document.addEventListener('keydown', handleEscape);
-			document.body.style.overflow = 'hidden';
-		}
-
-		return () => {
-			document.removeEventListener('keydown', handleEscape);
-			document.body.style.overflow = 'unset';
-		};
-	}, [isModalOpen]);
+	const { discount, packages, monthlyInstallments } = pricingConfig;
 
 	const calculatePrice = (basePrice: number) => {
 		const discountedPrice = discount.enabled
@@ -314,129 +298,19 @@ const PricingInteractive: React.FC = () => {
 					})}
 				</div>
 
-				{/* Discount + Secondary CTA */}
-				<div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
-					{discount.enabled && (
-						<span className="text-[11px] text-gray-500">
-							{discount.label} applied to all packages
-						</span>
-					)}
-					<span className="hidden sm:inline text-gray-300">·</span>
-					<button
-						onClick={() => setIsModalOpen(true)}
-						className="text-[11px] text-gray-600 hover:text-accent transition-colors cursor-pointer"
-						aria-label="View full pricing and add-ons"
-						type="button"
+				{/* Secondary CTA to full pricing */}
+				<div className="flex justify-center mt-6">
+					<CTA
+						href="/pricing"
+						variant="dark"
+						size="xs"
+						showArrow={true}
+						className="text-[11px]"
 					>
-						View full pricing & add-ons →
-					</button>
+						View full pricing & add-ons
+					</CTA>
 				</div>
 			</div>
-
-			{/* Add-ons Modal */}
-			{isModalOpen && (
-				<div 
-					className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-					onClick={() => setIsModalOpen(false)}
-					role="dialog"
-					aria-modal="true"
-					aria-labelledby="modal-title"
-					aria-describedby="modal-description"
-				>
-					<div 
-						className="bg-[#f5f5f5] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
-						onClick={(e) => e.stopPropagation()}
-					>
-						{/* Modal Header */}
-						<div className="sticky top-0 bg-[#f5f5f5] border-b border-gray-200 px-6 py-4 flex items-center justify-between z-10">
-							<div>
-								<h3 className="font-headline text-xl sm:text-2xl font-semibold text-text mb-1">
-									Additional Services & Add-ons
-								</h3>
-								<p className="text-xs text-gray-500">
-									Enhance your package with these services
-								</p>
-							</div>
-					<button
-						onClick={() => setIsModalOpen(false)}
-						className="text-gray-400 hover:text-gray-600 transition-colors p-2"
-						aria-label="Close add-ons modal"
-						type="button"
-					>
-								<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</button>
-						</div>
-
-						{/* Modal Content */}
-						<div className="p-6">
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-								{addons.map((addon) => (
-									<div
-										key={addon.id}
-										className="bg-white rounded-lg p-5 border border-accentSubtle/30 shadow-md hover:shadow-lg transition-all duration-300"
-									>
-										{/* Add-on Name */}
-										<h4 className="text-base sm:text-lg font-semibold text-text mb-1">
-											{addon.name}
-										</h4>
-
-										{/* Description */}
-										<p className="text-[11px] text-gray-600 mb-4">
-											{addon.description}
-										</p>
-
-										{/* Divider */}
-										<div className="border-t border-gray-100 mb-4"></div>
-
-										{/* Price */}
-										<div className="flex items-center justify-between">
-											<div>
-												{addon.price ? (
-													<span className="text-lg sm:text-xl font-semibold text-text">
-														${addon.price.toLocaleString()}
-													</span>
-												) : addon.priceRange ? (
-													<div>
-														<span className="text-lg sm:text-xl font-semibold text-text">
-															${addon.priceRange.min.toLocaleString()}-${addon.priceRange.max.toLocaleString()}
-														</span>
-														{addon.billingCycle && (
-															<span className="text-[10px] text-gray-400 ml-1">
-																{'/'}{addon.billingCycle}
-															</span>
-														)}
-													</div>
-												) : addon.customPrice ? (
-													<span className="text-lg sm:text-xl font-semibold text-text">
-														{addon.customPrice}
-													</span>
-												) : null}
-											</div>
-										</div>
-									</div>
-								))}
-							</div>
-
-							{/* CTA Section */}
-							<div className="border-t border-gray-200 pt-6 text-center">
-								<p className="text-sm text-gray-600 mb-4">
-									Ready to get started? Let's discuss your needs.
-								</p>
-								<CTA
-									href="/contact"
-									variant="primary"
-									size="md"
-									showArrow={true}
-								>
-									Get in touch
-								</CTA>
-							</div>
-						</div>
-					</div>
-				</div>
-			)}
 		</section>
 	);
 };

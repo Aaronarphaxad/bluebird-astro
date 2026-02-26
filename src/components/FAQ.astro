@@ -5,6 +5,7 @@ import FAQSchema from './FAQSchema.astro';
 import categoryWebsite from '../content/faq-categories/website.json';
 import categoryHosting from '../content/faq-categories/hosting.json';
 import categoryPricing from '../content/faq-categories/pricing.json';
+import categorySEO from '../content/faq-categories/seo.json';
 import faq1 from '../content/faqs/faq-1.json';
 import faq2 from '../content/faqs/faq-2.json';
 import faq3 from '../content/faqs/faq-3.json';
@@ -16,9 +17,11 @@ import faq8 from '../content/faqs/faq-8.json';
 import faq9 from '../content/faqs/faq-9.json';
 import faq10 from '../content/faqs/faq-10.json';
 import faq11 from '../content/faqs/faq-11.json';
+import faq12 from '../content/faqs/faq-12.json';
 
 const categories = [
 	{ entry: categoryWebsite },
+	{ entry: categorySEO },
 	{ entry: categoryHosting },
 	{ entry: categoryPricing },
 ];
@@ -35,6 +38,7 @@ const faqs = [
 	{ entry: faq9 },
 	{ entry: faq10 },
 	{ entry: faq11 },
+	{ entry: faq12 },
 ];
 const sortedFaqs = faqs.sort((a, b) => (a.entry.order || 0) - (b.entry.order || 0));
 

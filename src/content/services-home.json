@@ -1,37 +1,37 @@
 [
-	{
-		"id": "websites",
-		"title": "Websites",
-		"description": "Fast, responsive websites built with clean code and tailored features that drive real business results.",
-		"tags": ["Custom code", "WordPress", "CMS", "Webflow", "Framer"],
-		"image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80"
-	},
-	{
-		"id": "web-applications",
-		"title": "Custom web applications",
-		"description": "Scalable web apps with custom functionality, APIs, and architecture that grow with your business.",
-		"tags": ["Custom functionality", "APIs", "Auth", "Scalable architecture", "Support"],
-		"image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80"
-	},
-	{
-		"id": "brand-design",
-		"title": "Brand Design",
-		"description": "Comprehensive brand strategy and visual identity that communicates your unique value.",
-		"tags": ["Logo design", "Brand guidelines", "Typography", "Visual identity"],
-		"image": "https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=400&q=80"
-	},
-	{
-		"id": "crm-automation",
-		"title": "CRM & Automation",
-		"description": "CRM setup and workflow automation that streamlines operations and integrates with your tools.",
-		"tags": ["CRM setup", "Workflow automation", "Integrations", "Training"],
-		"image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80"
-	},
-	{
-		"id": "website-redesign",
-		"title": "Website redesign",
-		"description": "Convert, upgrade, or migrate your existing site to a faster, conversion-focused experience.",
-		"tags": ["Convert", "Upgrade", "Migrate"],
-		"image": "https://images.unsplash.com/photo-1467232002470-1aacc7743d2f?w=400&q=80"
-	}
+  {
+    "id": "websites",
+    "title": "Websites",
+    "description": "Fast, responsive websites built with clean code and tailored features that drive real business results.",
+    "tags": ["Next.js", "Astro", "Sanity CMS", "Custom code"],
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80"
+  },
+  {
+    "id": "local-seo",
+    "title": "Local SEO",
+    "description": "Get found on Google by local customers. Google Business Profile setup, local keywords, monthly reports, and done-for-you management. Add after your website launches.",
+    "tags": ["Google Business Profile", "Local rankings", "Monthly reports", "Done-for-you"],
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80"
+  },
+  {
+    "id": "web-applications",
+    "title": "Custom web applications",
+    "description": "Scalable web apps with custom functionality, APIs, and architecture that grow with your business.",
+    "tags": ["Custom functionality", "APIs", "Auth", "Scalable architecture", "Support"],
+    "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80"
+  },
+  {
+    "id": "brand-design",
+    "title": "Brand Design",
+    "description": "Comprehensive brand strategy and visual identity that communicates your unique value.",
+    "tags": ["Logo design", "Brand guidelines", "Typography", "Visual identity"],
+    "image": "https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=400&q=80"
+  },
+  {
+    "id": "crm-automation",
+    "title": "CRM & Automation",
+    "description": "CRM setup and workflow automation that streamlines operations and integrates with your tools.",
+    "tags": ["CRM setup", "Workflow automation", "Integrations", "Training"],
+    "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80"
+  }
 ]

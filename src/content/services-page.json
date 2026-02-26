@@ -33,6 +33,20 @@
       "order": 1
     },
     {
+      "title": "Local SEO",
+      "icon": "globe",
+      "group": "main",
+      "description": "Get found on Google by local customers. We set up and manage your Google Business Profile, local keywords, and monthly reports. Done-for-you—add after your website launches.",
+      "whatsIncluded": [
+        "Google Business Profile setup",
+        "Local keyword optimization",
+        "Monthly reports",
+        "Done-for-you management",
+        "No ranking guarantees—we focus on visibility"
+      ],
+      "order": 2
+    },
+    {
       "title": "Custom Software",
       "icon": "code",
       "group": "main",
@@ -44,7 +58,7 @@
         "User authentication",
         "Ongoing support"
       ],
-      "order": 2
+      "order": 3
     },
     {
       "title": "Brand Design",
@@ -72,9 +86,20 @@
         "Team training",
         "Ongoing optimization"
       ],
-      "order": 4
+      "order": 5
     }
   ],
+  "afterLaunch": {
+    "heading": "After launch",
+    "body": "We build your website, then help local customers find it.",
+    "steps": [
+      { "title": "Website", "description": "Your foundation—fast, clear, and conversion-focused." },
+      { "title": "Local SEO", "description": "Get found on Google. Add when you're ready." },
+      { "title": "Automation", "description": "Handle leads and follow-up without the manual work." }
+    ],
+    "linkText": "Learn about Local SEO",
+    "linkHref": "/local-seo"
+  },
   "processTeaser": {
     "heading": "How it works",
     "body": "We align on scope and timeline, then design and build in clear phases. Most projects launch in 4–8 weeks.",

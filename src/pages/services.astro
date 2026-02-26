@@ -8,6 +8,7 @@ const {
 	problemStatement,
 	sectionLabels,
 	services,
+	afterLaunch,
 	processTeaser,
 	whyChooseUs,
 	cta,
@@ -164,6 +165,29 @@ const getIcon = (iconName: string) => {
 					))}
 				</div>
 			</div>
+
+			{afterLaunch && (
+				<div class="mb-16 sm:mb-20 rounded-2xl bg-accent/5 border border-accent/10 p-6 sm:p-8 md:p-10">
+					<h2 class="font-headline text-xl sm:text-2xl font-semibold text-text mb-3">
+						{afterLaunch.heading}
+					</h2>
+					<p class="text-sm sm:text-base text-textMuted leading-relaxed mb-6 max-w-2xl">
+						{afterLaunch.body}
+					</p>
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+						{afterLaunch.steps.map((step: { title: string; description: string }) => (
+							<div class="bg-white rounded-xl border border-accentSubtle/30 p-4">
+								<h3 class="font-headline text-base font-semibold text-text mb-2">{step.title}</h3>
+								<p class="text-sm text-textMuted">{step.description}</p>
+							</div>
+						))}
+					</div>
+					<a href={afterLaunch.linkHref} class="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded">
+						{afterLaunch.linkText}
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+					</a>
+				</div>
+			)}
 
 			<!-- Process teaser -->
 			<div class="mb-16 sm:mb-20 rounded-2xl bg-accent/5 border border-accent/10 p-6 sm:p-8 md:p-10">

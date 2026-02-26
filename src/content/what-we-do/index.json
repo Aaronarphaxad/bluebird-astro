@@ -7,13 +7,10 @@
       "name": "Next.js"
     },
     {
-      "name": "WordPress"
+      "name": "Astro"
     },
     {
       "name": "Sanity CMS"
-    },
-    {
-      "name": "Webflow"
     }
   ]
 }

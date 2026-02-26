@@ -1,0 +1,47 @@
+---
+import CTA from './ui/CTA.astro';
+---
+
+<section class="relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-bg overflow-hidden" aria-label="After launch">
+	<div class="relative max-w-4xl mx-auto">
+		<div class="text-center mb-10 sm:mb-12">
+			<p class="font-body text-section-tiny font-medium text-textMuted mb-3">
+				What happens next
+			</p>
+			<h2 class="font-headline text-section-header font-medium text-text mb-1">
+				After launch
+			</h2>
+			<p class="font-body text-section-subheading font-medium text-textMuted max-w-md mx-auto">
+				We build your website, then help local customers find it.
+			</p>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto mb-10">
+			<div class="bg-white rounded-xl border border-accent/10 p-5 text-center shadow-sm">
+				<span class="inline-flex w-10 h-10 rounded-full bg-accent/15 text-accent font-headline font-semibold text-lg items-center justify-center mb-3" aria-hidden="true">1</span>
+				<h3 class="font-body text-section-inner-title font-medium text-text mb-1.5">Website</h3>
+				<p class="font-body text-section-body font-medium text-textMuted leading-relaxed">
+					Your foundation—fast, clear, and conversion-focused.
+				</p>
+			</div>
+			<div class="bg-white rounded-xl border border-accent/10 p-5 text-center shadow-sm">
+				<span class="inline-flex w-10 h-10 rounded-full bg-accent/15 text-accent font-headline font-semibold text-lg items-center justify-center mb-3" aria-hidden="true">2</span>
+				<h3 class="font-body text-section-inner-title font-medium text-text mb-1.5">Local SEO</h3>
+				<p class="font-body text-section-body font-medium text-textMuted leading-relaxed">
+					Get found on Google. Add when you're ready.
+				</p>
+			</div>
+			<div class="bg-white rounded-xl border border-accent/10 p-5 text-center shadow-sm">
+				<span class="inline-flex w-10 h-10 rounded-full bg-accent/15 text-accent font-headline font-semibold text-lg items-center justify-center mb-3" aria-hidden="true">3</span>
+				<h3 class="font-body text-section-inner-title font-medium text-text mb-1.5">Automation</h3>
+				<p class="font-body text-section-body font-medium text-textMuted leading-relaxed">
+					Handle leads and follow-up without the manual work.
+				</p>
+			</div>
+		</div>
+		<div class="text-center">
+			<CTA href="/local-seo" variant="secondary" size="sm" showArrow={true}>
+				Learn about Local SEO
+			</CTA>
+		</div>
+	</div>
+</section>

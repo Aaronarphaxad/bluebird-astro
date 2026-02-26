@@ -7,29 +7,33 @@ const services = [
   {
     title: 'Website design',
     description: 'Beautiful, high-converting sites',
+    href: '/services',
     bgColor: '#1e1e3f', // Dark navy/purple
     iconColor: '#8B5CF6', // Purple
     icon: TrendingUp,
   },
   {
-    title: 'Custom software',
-    description: 'Tailored solutions for your needs',
-    bgColor: '#1a2744', // Dark blue
-    iconColor: '#3B82F6', // Blue
+    title: 'Local SEO',
+    description: 'Get found on Google by local customers',
+    href: '/local-seo',
+    bgColor: '#1a2e24', // Dark green
+    iconColor: '#10B981', // Green
     icon: Globe,
   },
   {
     title: 'Brand design',
     description: 'Stand out from the crowd',
+    href: '/services',
     bgColor: '#2a2318', // Dark brown/amber
     iconColor: '#F59E0B', // Amber
     icon: Palette,
   },
   {
-    title: 'CRM & Automation',
+    title: 'Automation',
     description: 'Streamline your operations',
-    bgColor: '#1a2e24', // Dark green
-    iconColor: '#10B981', // Green
+    href: '/services',
+    bgColor: '#003297', // Dark green
+    iconColor: '#ffffff', // Green
     icon: Settings,
   },
 ]
@@ -232,7 +236,7 @@ export default function Header({ logoSrc = '/bblogoblack.svg' }: HeaderProps) {
                     return (
                       <a
                         key={service.title}
-                        href="/services"
+                        href={service.href ?? '/services'}
                         className="rounded-xl p-3.5 active:scale-[0.98] transition-transform duration-200 touch-manipulation min-w-0"
                         style={{ backgroundColor: service.bgColor }}
                         onClick={() => setIsOpen(false)}

@@ -1,51 +1,162 @@
 ---
-// Problem statement – right after hero, sets up Why Choose Us as the answer
-const pains = [
-	'Your website doesn’t reflect how good your business is.',
-	'Visitors don’t turn into sales or inquiries.',
-	'You’re not sure what to fix first.',
+// Problem statement – blue section (like Services), tabs + carousel (problems), high contrast
+import Tabs from './bearnie/tabs/Tabs.astro';
+import TabsList from './bearnie/tabs/TabsList.astro';
+import TabsTrigger from './bearnie/tabs/TabsTrigger.astro';
+import TabsContent from './bearnie/tabs/TabsContent.astro';
+import Carousel from './bearnie/carousel/Carousel.astro';
+import CarouselContent from './bearnie/carousel/CarouselContent.astro';
+import CarouselItem from './bearnie/carousel/CarouselItem.astro';
+import CarouselPrevious from './bearnie/carousel/CarouselPrevious.astro';
+import CarouselNext from './bearnie/carousel/CarouselNext.astro';
+import CarouselDots from './bearnie/carousel/CarouselDots.astro';
+
+const problems = [
+	{
+		quote: "We're too busy to manage our website and marketing.",
+		body: "You didn't start your business to babysit plugins, fix broken forms, or figure out Google rankings at midnight. We step in as your technical and digital growth partner — handling strategy, development, optimization, and ongoing improvements so you can focus on running your business.",
+		icon: 'clock',
+	},
+	{
+		quote: "Our website looks outdated and feels slow.",
+		body: "An outdated site silently kills trust. Slow load times kill conversions. We rebuild websites using modern frameworks, performance-first development, and conversion-focused design. The result? Faster load speeds, stronger brand credibility, and a site built to turn visitors into paying customers.",
+		icon: 'speed',
+	},
+	{
+		quote: "We're not showing up on Google.",
+		body: "If you're invisible in search, you're invisible to buyers. We optimize your site structure, technical SEO, and local presence so you rank where it matters — whether that's Surrey, Vancouver, BC-wide, or across competitive U.S. markets. More visibility means more traffic. More traffic means more opportunities.",
+		icon: 'search',
+	},
 ];
-const placeholderImage = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80';
 ---
 
-<section class="relative py-14 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-bg overflow-hidden" aria-label="The problem we solve">
-	<div class="relative max-w-5xl mx-auto">
-		<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-			<!-- Copy -->
-			<div class="lg:col-span-7">
-				<h2 class="font-headline text-section-header font-medium text-text leading-tight mb-6">
-					You’re better than your site suggests.
+<section class="problem-statement relative py-16 sm:py-20 md:py-24 bg-blue-800 overflow-hidden" aria-label="It's different here">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-12">
+		<!-- Part 1: It's Different Here – centered, white text -->
+		<div class="text-center mb-14 sm:mb-16 md:mb-20">
+			<p class="font-body text-section-tiny font-medium text-white/70 mb-3">
+				Who we are
+			</p>
+			<h2 class="font-headline text-section-header font-medium text-white mb-1">
+				It's <span class="text-blue-200">Different</span> Here.
+			</h2>
+		</div>
+		<div class="max-w-2xl mx-auto mb-16 sm:mb-20 md:mb-24">
+			<Tabs defaultValue="who-we-are" class="w-full">
+				<TabsList class="flex w-full rounded-xl bg-white/10 p-1 gap-0 h-auto">
+					<TabsTrigger value="who-we-are" class="flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all data-[state=active]:bg-white data-[state=active]:text-blue-800 data-[state=active]:shadow-sm data-[state=inactive]:text-white/80">
+						Who we are
+					</TabsTrigger>
+					<TabsTrigger value="who-we-arent" class="flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all data-[state=active]:bg-white data-[state=active]:text-blue-800 data-[state=active]:shadow-sm data-[state=inactive]:text-white/80">
+						Who we aren't
+					</TabsTrigger>
+				</TabsList>
+				<TabsContent value="who-we-are" class="mt-6">
+					<div class="font-body text-section-body text-white/90 space-y-4">
+						<p>
+							At Bluebird Web Services we have one rule: <strong class="text-white">if your website doesn't make you money, it's a liability.</strong> Our job is to make your digital presence generate more revenue than it costs. We build digital assets that attract traffic, convert leads, and support real growth—every strategy and line of code aimed at measurable results.
+						</p>
+						<p>
+							We're based in Surrey but work with ambitious businesses across BC, Canada, and the U.S. When you win, we stay in business. That's the alignment.
+						</p>
+					</div>
+				</TabsContent>
+				<TabsContent value="who-we-arent" class="mt-6">
+					<div class="font-body text-section-body text-white/90 space-y-4">
+						<p>
+							We're not the agency that sells a shiny website and disappears. We don't push bloated packages or services you don't need, and we don't build portfolio pieces that do nothing in the real world.
+						</p>
+						<p>
+							We're a business, but longevity comes from results, not short-term invoices. We build long-term partnerships with transparency and performance tracking. If it doesn't help your business grow, we don't recommend it.
+						</p>
+					</div>
+				</TabsContent>
+			</Tabs>
+			<div class="text-center mt-8">
+				<a
+					href="#contact"
+					class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium rounded-full border-2 border-white/60 text-white bg-transparent hover:bg-white hover:text-blue-800 transition-colors"
+				>
+					Let's talk
+				</a>
+			</div>
+		</div>
+
+		<!-- Part 2: Problems we can solve – 2 columns: title left, carousel right -->
+		<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-8">
+			<!-- Left: title -->
+			<div class="lg:col-span-5">
+				<p class="font-body text-section-tiny font-medium text-white/70 mb-3">
+					What we fix
+				</p>
+				<h2 class="font-headline text-section-header font-medium text-white leading-tight mb-2">
+					Problems we can <span class="text-blue-200">Solve.</span>
 				</h2>
-				<ul class="space-y-4 mb-6" role="list">
-					{pains.map((pain) => (
-						<li class="flex items-start gap-3">
-							<span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent/15 flex items-center justify-center mt-0.5" aria-hidden="true">
-								<svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-								</svg>
-							</span>
-							<span class="font-body text-section-subheading font-medium text-textMuted leading-snug">{pain}</span>
-						</li>
-					))}
-				</ul>
-				<p class="font-headline text-section-inner-title font-medium text-text">
-					We fix that.
+				<p class="font-body text-section-subheading text-white/80 max-w-sm">
+					We tackle the issues that hold your business back online.
 				</p>
 			</div>
-			<!-- Visual: placeholder -->
-			<div class="lg:col-span-5 order-first lg:order-none">
-				<div class="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[3/2] bg-accentSubtle/50">
-					<img
-						src={placeholderImage}
-						alt=""
-						width={600}
-						height={400}
-						class="w-full h-full object-cover object-center"
-						loading="lazy"
-					/>
-					<div class="absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-transparent pointer-events-none" aria-hidden="true"></div>
-				</div>
+			<!-- Right: carousel with individual problem cards -->
+			<div class="lg:col-span-7">
+				<Carousel autoplay autoplayDelay={5000} loop class="problem-carousel w-full">
+					<CarouselContent class="rounded-2xl overflow-hidden">
+						{problems.map((item) => (
+							<CarouselItem class="min-h-[280px] sm:min-h-[320px]">
+								<article class="problem-card h-full rounded-2xl bg-white/95 backdrop-blur border border-white/20 shadow-xl p-6 sm:p-8 flex flex-col">
+									<span class="inline-flex w-11 h-11 rounded-xl bg-blue-800/10 text-blue-800 items-center justify-center mb-4 flex-shrink-0" aria-hidden="true">
+										{item.icon === 'clock' && (
+											<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+										)}
+										{item.icon === 'speed' && (
+											<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+										)}
+										{item.icon === 'search' && (
+											<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+										)}
+									</span>
+									<h3 class="font-headline text-section-inner-title font-medium text-text leading-tight mb-3">
+										"{item.quote}"
+									</h3>
+									<div class="h-1 w-14 bg-blue-800/20 rounded-full mb-4 flex-shrink-0" aria-hidden="true"></div>
+									<p class="font-body text-section-body text-textMuted leading-relaxed flex-1">
+										{item.body}
+									</p>
+								</article>
+							</CarouselItem>
+						))}
+					</CarouselContent>
+					<CarouselPrevious class="problem-carousel-prev left-0 bg-white/90 text-blue-800 border-0 hover:bg-white shadow-md" />
+					<CarouselNext class="problem-carousel-next right-0 bg-white/90 text-blue-800 border-0 hover:bg-white shadow-md" />
+					<CarouselDots count={3} class="problem-carousel-dots" />
+				</Carousel>
 			</div>
+		</div>
+
+		<!-- Part 3: CTA -->
+		<div class="text-center mt-14 sm:mt-16 md:mt-20 pt-10 border-t border-white/20">
+			<p class="font-body text-section-subheading text-white/90 mb-6">
+				If your website isn't pulling its weight, it's time to fix that.
+			</p>
+			<a
+				href="#contact"
+				class="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-full bg-white text-blue-800 hover:bg-white/90 transition-colors shadow-lg"
+			>
+				Start a project
+				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+				</svg>
+			</a>
 		</div>
 	</div>
 </section>
+
+<style>
+	/* Carousel dots: visible on blue background */
+	.problem-carousel-dots :global(button) {
+		background-color: rgba(255, 255, 255, 0.4);
+	}
+	.problem-carousel-dots :global(button[data-active="true"]) {
+		background-color: white;
+		transform: scale(1.25);
+	}
+</style>
