@@ -8,6 +8,8 @@ const pages = [
 	{ url: '/about', changefreq: 'monthly', priority: 0.8, lastmod: new Date().toISOString().split('T')[0] },
 	{ url: '/services', changefreq: 'monthly', priority: 0.9, lastmod: new Date().toISOString().split('T')[0] },
 	{ url: '/projects', changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString().split('T')[0] },
+	{ url: '/pricing', changefreq: 'monthly', priority: 0.9, lastmod: new Date().toISOString().split('T')[0] },
+	{ url: '/local-seo', changefreq: 'monthly', priority: 0.8, lastmod: new Date().toISOString().split('T')[0] },
 	{ url: '/contact', changefreq: 'monthly', priority: 0.7, lastmod: new Date().toISOString().split('T')[0] },
 	{ url: '/privacy', changefreq: 'yearly', priority: 0.3, lastmod: new Date().toISOString().split('T')[0] },
 	{ url: '/terms', changefreq: 'yearly', priority: 0.3, lastmod: new Date().toISOString().split('T')[0] },

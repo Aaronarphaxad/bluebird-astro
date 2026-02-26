@@ -14,6 +14,7 @@ import Services from '@/components/Services.astro';
 import AfterLaunch from '@/components/AfterLaunch.astro';
 import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
 import ReviewSchema from '../components/ReviewSchema.astro';
+import heroBackground from '@/assets/images/hero/hero-background.avif';
 ---
 
 <Layout
@@ -22,7 +23,8 @@ import ReviewSchema from '../components/ReviewSchema.astro';
 	canonicalURL="/"
 	ogImage="/og-home.jpg"
 	structuredDataType="WebSite"
-	keywords="web development BC, website design Vancouver, custom websites Canada, web applications, e-commerce development, UI/UX design British Columbia, conversion optimization, fast websites, SEO services, web design studio Vancouver"
+	keywords="web development BC, website design Vancouver, custom websites Canada, web design Surrey, brand design British Columbia, conversion optimization, fast websites, SEO services, web design studio Vancouver"
+	heroImagePreloadUrl={typeof heroBackground === 'string' ? heroBackground : heroBackground.src}
 >
 	<Hero2 />
 	<ProblemStatement />

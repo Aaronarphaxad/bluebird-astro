@@ -32,13 +32,14 @@ const organizationSchema = {
 		addressCountry: 'CA',
 	},
 	sameAs: [
-		'https://www.instagram.com/',
-		'https://x.com/',
-		'https://www.linkedin.com/',
+		'https://x.com/bluebird_web',
+		'https://www.linkedin.com/company/bluebird-web-services',
+		'https://www.instagram.com/bluebird-web',
 	],
 	contactPoint: {
 		'@type': 'ContactPoint',
-		email: 'info@bluebirdweb.ca',
+		email: 'hello@bluebirdweb.ca',
+		telephone: '+12368635191',
 		contactType: 'Customer Service',
 		areaServed: 'CA',
 		availableLanguage: 'English',
@@ -57,14 +58,6 @@ const websiteSchema = {
 	name: 'Bluebird',
 	url: baseUrl,
 	description: 'Custom websites and web applications built for speed, performance, and conversion.',
-	potentialAction: {
-		'@type': 'SearchAction',
-		target: {
-			'@type': 'EntryPoint',
-			urlTemplate: `${baseUrl}/search?q={search_term_string}`,
-		},
-		'query-input': 'required name=search_term_string',
-	},
 };
 
 // WebPage schema

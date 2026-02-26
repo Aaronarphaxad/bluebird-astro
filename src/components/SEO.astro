@@ -4,6 +4,7 @@ interface Props {
 	description: string;
 	canonicalURL?: string;
 	ogImage?: string;
+	ogImageAlt?: string;
 	ogType?: 'website' | 'article';
 	noindex?: boolean;
 	nofollow?: boolean;
@@ -16,11 +17,14 @@ interface Props {
 	tags?: string[];
 }
 
+const defaultOgImageAlt = 'Bluebird – Web design and Local SEO services';
+
 const {
 	title,
 	description,
 	canonicalURL = Astro.url,
 	ogImage = `${Astro.site || 'https://bluebirdweb.ca'}/og-image.jpg`,
+	ogImageAlt = defaultOgImageAlt,
 	ogType = 'website',
 	noindex = false,
 	nofollow = false,
@@ -50,9 +54,26 @@ const metaKeywords = keywords || defaultKeywords;
 <title>{fullTitle}</title>
 <meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
-{noindex && <meta name="robots" content="noindex" />}
-{nofollow && <meta name="robots" content="nofollow" />}
-{!noindex && !nofollow && <meta name="robots" content="index, follow" />}
+<!-- Robots: single set, respect noindex/nofollow, include max-image-preview for AI/crawlers -->
+{noindex ? (
+	<>
+		<meta name="robots" content="noindex" />
+		<meta name="googlebot" content="noindex" />
+		<meta name="bingbot" content="noindex" />
+	</>
+) : nofollow ? (
+	<>
+		<meta name="robots" content="index, nofollow" />
+		<meta name="googlebot" content="index, nofollow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="bingbot" content="index, nofollow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+	</>
+) : (
+	<>
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+	</>
+)}
 <link rel="canonical" href={fullCanonicalURL} />
 
 <!-- Open Graph / Facebook -->
@@ -63,7 +84,7 @@ const metaKeywords = keywords || defaultKeywords;
 <meta property="og:image" content={fullOgImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content={description} />
+<meta property="og:image:alt" content={ogImageAlt} />
 <meta property="og:site_name" content={siteName} />
 <meta property="og:locale" content="en_CA" />
 
@@ -73,7 +94,7 @@ const metaKeywords = keywords || defaultKeywords;
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={fullOgImage} />
-<meta name="twitter:image:alt" content={description} />
+<meta name="twitter:image:alt" content={ogImageAlt} />
 
 <!-- Additional SEO -->
 <meta name="author" content={author} />
@@ -102,7 +123,3 @@ const metaKeywords = keywords || defaultKeywords;
 	<meta property="article:tag" content={tag} />
 ))}
 
-<!-- AI/LLM Optimization -->
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />

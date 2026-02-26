@@ -10,6 +10,7 @@ interface Props {
 	description?: string;
 	canonicalURL?: string;
 	ogImage?: string;
+	ogImageAlt?: string;
 	ogType?: 'website' | 'article';
 	noindex?: boolean;
 	nofollow?: boolean;
@@ -21,6 +22,8 @@ interface Props {
 	articleSection?: string;
 	tags?: string[];
 	structuredDataType?: 'Organization' | 'WebSite' | 'WebPage' | 'Service';
+	/** When set (e.g. on homepage), preload this image for LCP. */
+	heroImagePreloadUrl?: string;
 }
 
 const {
@@ -28,6 +31,7 @@ const {
 	description = 'Custom websites and web applications built for speed, performance, and conversion. Fast delivery, conversion-focused design, and ongoing support.',
 	canonicalURL,
 	ogImage,
+	ogImageAlt,
 	ogType,
 	noindex,
 	nofollow,
@@ -38,6 +42,7 @@ const {
 	articleSection,
 	tags,
 	structuredDataType = 'Organization',
+	heroImagePreloadUrl,
 } = Astro.props;
 ---
 
@@ -48,7 +53,10 @@ const {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		
+		<!-- Preload LCP image when provided (e.g. homepage hero) -->
+		{heroImagePreloadUrl && <link rel="preload" as="image" href={heroImagePreloadUrl} />}
+		<!-- Preload critical font for FCP (headline text) -->
+		<link rel="preload" href="/fonts/NotoSerif-Medium.ttf" as="font" type="font/ttf" crossorigin />
 		<!-- Resource hints for performance -->
 		<link rel="dns-prefetch" href="https://images.unsplash.com" />
 		<link rel="preconnect" href="https://images.unsplash.com" crossorigin />
@@ -58,6 +66,7 @@ const {
 			description={description}
 			canonicalURL={canonicalURL}
 			ogImage={ogImage}
+			ogImageAlt={ogImageAlt}
 			ogType={ogType}
 			noindex={noindex}
 			nofollow={nofollow}
@@ -85,8 +94,7 @@ const {
 		<noscript>
 			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		</noscript>
-		<!-- Additional SEO -->
-		<link rel="alternate" type="application/rss+xml" title="Bluebird RSS Feed" href="/rss.xml" />
+		<meta name="google-site-verification" content="vziqSuXbt5r3sxcgw8KQrsnf42VjSydpR9eqAD7dTmg" />
 	</head>
 	<body class="bg-bg text-text font-body antialiased scroll-smooth">
 		<!-- Skip to main content link for accessibility -->
