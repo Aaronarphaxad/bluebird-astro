@@ -7,7 +7,7 @@ const services = [
   {
     title: 'Website design',
     description: 'Beautiful, high-converting sites',
-    href: '/services',
+    href: '/website-design',
     bgColor: '#1e1e3f', // Dark navy/purple
     iconColor: '#8B5CF6', // Purple
     icon: TrendingUp,
@@ -134,7 +134,7 @@ export default function Header({ logoSrc = '/bblogoblack.svg' }: HeaderProps) {
                   return (
                     <a
                       key={service.title}
-                      href="/services"
+                      href={service.href}
                       className="rounded-2xl p-5 text-center hover:scale-[1.02] transition-transform duration-200"
                       style={{ backgroundColor: service.bgColor }}
                     >

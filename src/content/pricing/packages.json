@@ -14,6 +14,8 @@
       "features": [
         "Blazingly fast & beautiful site",
         "Single landing page with sections",
+        "Up to 5 pages",
+        "Mobile-optimized",
         "Basic form setup",
         "Basic SEO optimization"
       ],
@@ -31,7 +33,7 @@
       "additionalPagePrice": 300,
       "features": [
         "Everything in Essential",
-        "Up to 8 pages",
+        "Up to 10 pages",
         "Custom animations",
         "Advanced SEO",
         "CMS setup",
@@ -45,7 +47,7 @@
       "name": "Custom",
       "badge": "FULL PACKAGE",
       "recommended": false,
-      "description": "Complete solution with cinematic design",
+      "description": "Complete solution with cinematic design for businesses that need a lot of pages",
       "deliveryTime": "4-6 weeks",
       "basePrice": 7000,
       "additionalPagePrice": 300,
@@ -63,7 +65,7 @@
   ],
   "addons": [
     { "id": "care-plan", "name": "Care Plan", "description": "Hosting, infrastructure, monitoring, minor technical maintenance, and reports.", "price": 300, "billingCycle": "year" },
-    { "id": "edit-packs", "name": "Edit Packs", "description": "Support-ticket style content updates and small changes. Sold in packs.", "customPrice": "From $X" },
+    { "id": "edit-packs", "name": "Edit Packs", "description": "Support-ticket style content updates and small changes. Sold in packs.", "customPrice": "From $75" },
     { "id": "local-seo-growth", "name": "Local SEO Growth", "description": "Get found on Google. Google Business Profile setup, local keywords, monthly reports, done-for-you management. Add after launch.", "price": 499, "billingCycle": "month" },
     { "id": "local-seo-authority", "name": "Local SEO Authority", "description": "Everything in Growth plus deeper local strategy and more visibility. Monthly reports included.", "price": 699, "billingCycle": "month" },
     { "id": "branding", "name": "Branding (logo + identity)", "description": "Logo design and visual identity so your brand stands out.", "price": 700 },

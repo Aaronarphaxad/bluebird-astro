@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import CTA from '../components/ui/CTA.astro';
-import { pricingConfig } from '../components/PricingInteractive';
+import pricingData from '../content/pricing/packages.json';
 
-const { packages, addons, monthlyInstallments, customNote } = pricingConfig;
+const { packages, addons, monthlyInstallments, customNote } = pricingData;
 ---
 
 <Layout
