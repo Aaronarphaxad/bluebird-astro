@@ -43,18 +43,18 @@ const problems = [
 		</div>
 		<div class="max-w-2xl mx-auto mb-16 sm:mb-20 md:mb-24">
 			<Tabs defaultValue="who-we-are" class="w-full">
-				<TabsList class="flex w-full rounded-xl bg-white/10 p-1 gap-0 h-auto">
-					<TabsTrigger value="who-we-are" class="flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all data-[state=active]:bg-white data-[state=active]:text-blue-800 data-[state=active]:shadow-sm data-[state=inactive]:text-white/80">
+				<TabsList class="flex w-full rounded-full bg-white/10 p-1 gap-0 h-auto">
+					<TabsTrigger value="who-we-are" class="flex-1 rounded-full px-4 py-3 text-sm font-medium transition-all data-[state=active]:bg-white data-[state=active]:text-blue-800 data-[state=active]:shadow-sm data-[state=inactive]:text-white/80">
 						Who we are
 					</TabsTrigger>
-					<TabsTrigger value="who-we-arent" class="flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all data-[state=active]:bg-white data-[state=active]:text-blue-800 data-[state=active]:shadow-sm data-[state=inactive]:text-white/80">
+					<TabsTrigger value="who-we-arent" class="flex-1 rounded-full px-4 py-3 text-sm font-medium transition-all data-[state=active]:bg-white data-[state=active]:text-blue-800 data-[state=active]:shadow-sm data-[state=inactive]:text-white/80">
 						Who we aren't
 					</TabsTrigger>
 				</TabsList>
 				<TabsContent value="who-we-are" class="mt-6">
 					<div class="font-body text-section-body text-white/90 space-y-4">
 						<p>
-							At Bluebird Web Services we have one rule: <strong class="text-white">if your website doesn't make you money, it's a liability.</strong> Our job is to make your digital presence generate more revenue than it costs. We build digital assets that attract traffic, convert leads, and support real growth—every strategy and line of code aimed at measurable results.
+							At Bluebird Web Services we have one rule: <strong class="text-white">if your website doesn't make you money, it's a liability.</strong> Our job is to make your digital presence generate more revenue than it costs. We build digital assets that attract traffic, convert leads, and support real growth. Every strategy and line of code aimed at measurable results.
 						</p>
 						<p>
 							We're based in Surrey but work with ambitious businesses across BC, Canada, and the U.S. When you win, we stay in business. That's the alignment.
@@ -98,7 +98,7 @@ const problems = [
 			</div>
 			<!-- Right: carousel with individual problem cards -->
 			<div class="lg:col-span-7">
-				<Carousel autoplay autoplayDelay={5000} loop class="problem-carousel w-full">
+				<Carousel autoplay autoplayDelay={7000} loop class="problem-carousel w-full">
 					<CarouselContent class="rounded-2xl overflow-hidden">
 						{problems.map((item) => (
 							<CarouselItem class="min-h-[280px] sm:min-h-[320px]">
